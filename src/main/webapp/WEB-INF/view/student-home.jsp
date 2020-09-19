@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>My University</title>
 </head>
 <body>
-	<h1>Hello Word</h1>
+	<h3>Student Home</h3>
 </body>
 </html>
