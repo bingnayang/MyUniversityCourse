@@ -8,7 +8,16 @@ public class CourseController {
 
 	@GetMapping("/")
 	public String showHome() {
-		return "student-home";
+		return "home-page";
 	}
 	
+	@GetMapping("/students")
+	public String studentPage() {
+		return "students";
+	}
+	
+	@GetMapping("/instructors")
+	public String instructorPage() {
+		return "instructors";
+	}
 }

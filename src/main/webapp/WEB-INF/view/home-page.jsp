@@ -31,11 +31,18 @@
 		</form:form>
 	</nav>
 
-	<h3>Student Home</h3>
+	<h3>University Home</h3>
 	<hr>
 	<!-- Display user name and role -->
-	
-	
-	
+	<div class="container">
+		User: <security:authentication property="principal.username"/>
+		<br>
+		Role: <security:authentication property="principal.authorities"/>
+	</div>
+	<div class="container">
+		<a href="${pageContext.request.contextPath}/students">Student Page</a>
+		<br>
+		<a href="${pageContext.request.contextPath}/instructors">Instructor Page</a>
+	</div>
 </body>
 </html>

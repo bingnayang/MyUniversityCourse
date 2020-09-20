@@ -25,8 +25,8 @@ html, body {
 </style>
 <body class="bg-light">
 	<!-- Nav section -->
-	<nav class="navbar navbar-light bg-light">
-		<a class="navbar-brand" href="#"> <i class="fas fa-graduation-cap"></i>
+	<nav class="navbar navbar-light" style="background: #1F3944;">
+		<a class="navbar-brand text-light" href="#"> <i class="fas fa-graduation-cap"></i>
 			University
 		</a>
 	</nav>
