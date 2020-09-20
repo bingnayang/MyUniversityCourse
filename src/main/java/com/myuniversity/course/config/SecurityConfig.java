@@ -36,7 +36,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.formLogin() 										// Customizing the form
 				.loginPage("/showLoginPage")					// Show custom form at the request mapping
 				.loginProcessingUrl("/authenticateTheUser")		// Login form should POST data to this URL, check user and password
-				.permitAll();									// Allow all user to see login page
+				.permitAll()									// Allow all user to see login page
+			.and()
+			.logout().permitAll();								// Add logout support
 	}		
 	
 	
