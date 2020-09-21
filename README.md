@@ -1,5 +1,6 @@
 # MyUniversityCourse
  Spring project
  
-** Spring Framework
-** Maven
+* Spring Framework
+* Maven
+* MySQL
