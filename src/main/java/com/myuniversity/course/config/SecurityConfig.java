@@ -35,12 +35,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers("/students/**").hasRole("STUDENT")
 			.antMatchers("/instructors/**").hasRole("INSTRUCTOR")
 			.and()
-			.formLogin() 										// Customizing the form
-				.loginPage("/showLoginPage")					// Show custom form at the request mapping
-				.loginProcessingUrl("/authenticateTheUser")		// Login form should POST data to this URL, check user and password
-				.permitAll()									// Allow all user to see login page
+			.formLogin() 											// Customizing the form
+				.loginPage("/showLoginPage")						// Show custom form at the request mapping
+				.loginProcessingUrl("/authenticateTheUser")			// Login form should POST data to this URL, check user and password
+				.permitAll()										// Allow all user to see login page
 			.and()
-			.logout().permitAll();								// Add logout support
+			.logout().permitAll()									// Add logout support
+			.and()
+			.exceptionHandling().accessDeniedPage("/access-denied");
 	}		
 	
 	

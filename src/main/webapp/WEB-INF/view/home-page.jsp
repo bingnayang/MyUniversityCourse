@@ -40,9 +40,13 @@
 		Role: <security:authentication property="principal.authorities"/>
 	</div>
 	<div class="container">
-		<a href="${pageContext.request.contextPath}/students">Student Page</a>
+		<security:authorize access="hasRole('STUDENT')">
+			<a href="${pageContext.request.contextPath}/students">Student Page</a>
+		</security:authorize>
 		<br>
-		<a href="${pageContext.request.contextPath}/instructors">Instructor Page</a>
+		<security:authorize access="hasRole('INSTRUCTOR')">
+			<a href="${pageContext.request.contextPath}/instructors">Instructor Page</a>
+		</security:authorize>
 	</div>
 </body>
 </html>
