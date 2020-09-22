@@ -1,27 +1,32 @@
 package com.myuniversity.course.config;
 
 import java.beans.PropertyVetoException;
+import java.util.Properties;
 import java.util.logging.Logger;
 
 import javax.sql.DataSource;
 
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
+import org.springframework.orm.hibernate5.HibernateTransactionManager;
+import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 @Configuration
 @EnableWebMvc 												// Provides similar support to <mvc:annotation-driven>
-@ComponentScan(basePackages="com.myuniversity.course")
-@PropertySource("classpath:persistence-mysql.properties")	// Read the props file
-public class UniversityAppConfig {
+@ComponentScan("com.myuniversity.course")
+@PropertySource({ "classpath:persistence-mysql.properties" })// Read the props file
+public class UniversityAppConfig implements WebMvcConfigurer{
 	
 	// Set up variable to hold the properties
 	// Will hold data read from properties files
@@ -82,4 +87,40 @@ public class UniversityAppConfig {
 		int intPropVal = Integer.parseInt(propVal);
 		return intPropVal;
 	}
+	
+	private Properties getHibernateProperties() {
+
+		// set hibernate properties
+		Properties props = new Properties();
+
+		props.setProperty("hibernate.dialect", env.getProperty("hibernate.dialect"));
+		props.setProperty("hibernate.show_sql", env.getProperty("hibernate.show_sql"));
+		
+		return props;				
+	}
+	
+	@Bean
+	public LocalSessionFactoryBean sessionFactory(){
+		
+		// create session factorys
+		LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
+		
+		// set the properties
+		sessionFactory.setDataSource(securityDataSource());
+		sessionFactory.setPackagesToScan(env.getProperty("hibernate.packagesToScan"));
+		sessionFactory.setHibernateProperties(getHibernateProperties());
+		
+		return sessionFactory;
+	}
+	
+	@Bean
+	@Autowired
+	public HibernateTransactionManager transactionManager(SessionFactory sessionFactory) {
+		
+		// setup transaction manager based on session factory
+		HibernateTransactionManager txManager = new HibernateTransactionManager();
+		txManager.setSessionFactory(sessionFactory);
+
+		return txManager;
+	}	
 }
