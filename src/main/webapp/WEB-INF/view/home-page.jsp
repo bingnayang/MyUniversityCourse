@@ -47,6 +47,7 @@
 		<security:authorize access="hasRole('INSTRUCTOR')">
 			<a href="${pageContext.request.contextPath}/instructors">Instructor Page</a>
 		</security:authorize>
+		<a href="${pageContext.request.contextPath}/course-list">Course List</a>
 	</div>
 </body>
 </html>

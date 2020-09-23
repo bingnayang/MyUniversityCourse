@@ -1,5 +1,9 @@
 package com.myuniversity.course.service;
 
-public interface CourseService {
+import java.util.List;
 
+import com.myuniversity.course.entity.Course;
+
+public interface CourseService {
+	public List<Course> getCourses();
 }
