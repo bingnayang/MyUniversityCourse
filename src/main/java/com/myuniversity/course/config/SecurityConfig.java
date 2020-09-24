@@ -42,9 +42,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		// Restrict access based on the HttpServletReqeust
 		// Any request to the application must be logged in
 		http.authorizeRequests()										
-			.antMatchers("/").hasAnyRole("STUDENT","INSTRUCTOR")
+			.antMatchers("/").hasAnyRole("STUDENT","INSTRUCTOR","ADMIN")
 			.antMatchers("/students/**").hasRole("STUDENT")
 			.antMatchers("/instructors/**").hasRole("INSTRUCTOR")
+			.antMatchers("/admins/**").hasRole("ADMIN")
 			.and()
 			.formLogin() 											// Customizing the form
 				.loginPage("/showLoginPage")						// Show custom form at the request mapping

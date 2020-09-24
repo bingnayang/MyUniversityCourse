@@ -1,28 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="security"
-	uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<!-- Bootstrap CDN -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" 
+	href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<!-- Bootstrap core CSS -->
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
 	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
 	crossorigin="anonymous">
-<!-- Font-Awesome CDN -->
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
-	integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
-	crossorigin="anonymous" />
 <style>
 body {
 	font-size: .875rem;
 }
-
 .feather {
 	width: 16px;
 	height: 16px;
@@ -135,15 +134,13 @@ supports ((position: -webkit-sticky) or (position: sticky)) { .sidebar-sticky
 	}
 }
 </style>
-<title>Course List</title>
+
+<title>University Admin Page</title>
 </head>
 <body>
-
 	<nav
 		class="navbar navbar-dark sticky-top bg-primary flex-md-nowrap p-0 shadow">
-		<a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#"> <i
-			class="fas fa-graduation-cap"></i> University
-		</a>
+		<a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#"> <i class="fas fa-graduation-cap"></i> University</a>
 		<button class="navbar-toggler position-absolute d-md-none collapsed"
 			type="button" data-toggle="collapse" data-target="#sidebarMenu"
 			aria-controls="sidebarMenu" aria-expanded="false"
@@ -152,12 +149,11 @@ supports ((position: -webkit-sticky) or (position: sticky)) { .sidebar-sticky
 		</button>
 
 		<ul class="navbar-nav px-3">
-			<li class="nav-item text-nowrap"><form:form
-					class="form-inline my-2 my-lg-0"
-					action="${pageContext.request.contextPath}/logout" method="POST">
-					<input type="submit" value="Logout"
-						class="btn btn-outline-light my-2 my-sm-0">
-				</form:form></li>
+			<li class="nav-item text-nowrap">		
+				<form:form class="form-inline my-2 my-lg-0" action="${pageContext.request.contextPath}/logout" method="POST">
+					<input type="submit" value="Logout" class="btn btn-outline-light my-2 my-sm-0">
+				</form:form>
+			</li>
 		</ul>
 	</nav>
 
@@ -179,18 +175,13 @@ supports ((position: -webkit-sticky) or (position: sticky)) { .sidebar-sticky
 							href="${pageContext.request.contextPath}/">Home</a></li>
 						<li class="nav-item mb-2"><a
 							class="btn btn-outline-primary btn-block" href="${pageContext.request.contextPath}/course-list">
-								Course List</a></li>
-						<security:authorize access="hasRole('STUDENT')">
+								Course List</a></li>	
+						<security:authorize access="hasRole('ADMIN')">
 							<li class="nav-item mb-2"><a
-							class="btn btn-outline-primary btn-block" href="${pageContext.request.contextPath}/students">Register
-								Course</a>
-							</li>
-						</security:authorize>		
-						<security:authorize access="hasRole('INSTRUCTOR')">
-							<li class="nav-item mb-2"><a
-							class="btn btn-outline-primary btn-block" href="${pageContext.request.contextPath}/instructors">Post Grades</a>
-							</li>
-						</security:authorize>		
+								class="btn btn-outline-primary btn-block"
+								href="${pageContext.request.contextPath}/admins">Course 
+								Manage</a></li>
+						</security:authorize>
 					</ul>
 				</div>
 			</nav>
@@ -198,29 +189,10 @@ supports ((position: -webkit-sticky) or (position: sticky)) { .sidebar-sticky
 			<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
 				<div
 					class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-					<h1 class="h2">Course List</h1>
-					<div class="btn-toolbar mb-2 mb-md-0">					
-						<security:authentication property="principal.username"/> | <security:authentication property="principal.authorities"/>
-					</div>
-				</div>
-				<div>
-					<hr>
-					<div class="container-fluid">
-						<table class="table">
-							<thead class="thead-light">
-								<tr>
-									<th scope="col">First Name</th>
-									<th scope="col">First Name</th>
-									<th scope="col">First Name</th>
-								</tr>
-								<c:forEach var="tempCourse" items="${courses}">
-									<tr>
-										<td>${tempCourse.code}</td>
-										<td>${tempCourse.name}</td>
-										<td>${tempCourse.credit}</td>
-									</tr>
-								</c:forEach>
-						</table>
+					<h1 class="h2">Dashboard</h1>
+					<div class="btn-toolbar mb-2 mb-md-0">
+						<div class="btn-toolbar mb-2 mb-md-0"><security:authentication property="principal.username"/> | <security:authentication property="principal.authorities"/></div>
+
 					</div>
 				</div>
 
@@ -239,5 +211,7 @@ supports ((position: -webkit-sticky) or (position: sticky)) { .sidebar-sticky
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
 		integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
 		crossorigin="anonymous"></script>
+
+</body>
 </body>
 </html>

@@ -176,19 +176,27 @@ supports ((position: -webkit-sticky) or (position: sticky)) { .sidebar-sticky
 							class="btn btn-outline-primary btn-block"
 							href="${pageContext.request.contextPath}/">Home</a></li>
 						<li class="nav-item mb-2"><a
-							class="btn btn-outline-primary btn-block" href="${pageContext.request.contextPath}/course-list">
-								Course List</a></li>
+							class="btn btn-outline-primary btn-block"
+							href="${pageContext.request.contextPath}/course-list"> Course
+								List</a></li>
 						<security:authorize access="hasRole('STUDENT')">
 							<li class="nav-item mb-2"><a
-							class="btn btn-outline-primary btn-block" href="${pageContext.request.contextPath}/students">Register
-								Course</a>
-							</li>
-						</security:authorize>		
+								class="btn btn-outline-primary btn-block"
+								href="${pageContext.request.contextPath}/students">Register
+									Course</a></li>
+						</security:authorize>
 						<security:authorize access="hasRole('INSTRUCTOR')">
 							<li class="nav-item mb-2"><a
-							class="btn btn-outline-primary btn-block" href="${pageContext.request.contextPath}/instructors">Post Grades</a>
-							</li>
-						</security:authorize>		
+								class="btn btn-outline-primary btn-block"
+								href="${pageContext.request.contextPath}/instructors">Post
+									Grades</a></li>
+						</security:authorize>
+						<security:authorize access="hasRole('ADMIN')">
+							<li class="nav-item mb-2"><a
+								class="btn btn-outline-primary btn-block"
+								href="${pageContext.request.contextPath}/admins">Course 
+								Manage</a></li>
+						</security:authorize>
 					</ul>
 				</div>
 			</nav>
@@ -196,8 +204,53 @@ supports ((position: -webkit-sticky) or (position: sticky)) { .sidebar-sticky
 			<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
 				<div
 					class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-					<h1 class="h2">Welcome</h1> 
-					<div class="btn-toolbar mb-2 mb-md-0"><security:authentication property="principal.username"/> | <security:authentication property="principal.authorities"/></div>
+					<h1 class="h2">Dashboard</h1>
+					<div class="btn-toolbar mb-2 mb-md-0">
+						<security:authentication property="principal.username" />
+						|
+						<security:authentication property="principal.authorities" />
+					</div>
+				</div>
+				<div class="jumbotron jumbotron-fluid">
+					<div class="container">
+						<h1 class="display-4">Welcome To My University</h1>
+						<p class="lead">Study Hard & Work Hard & Love Life</p>
+					</div>
+				</div>
+
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-lg-4 d-flex align-items-stretch">
+							<div class="card">
+								<img src="https://images.unsplash.com/photo-1535982330050-f1c2fb79ff78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80" class="card-img-top" alt="...">
+								<div class="card-body">
+									<h5 class="card-title">News</h5>
+									<p class="card-text">Some quick example text to build on
+										the card title and make up the bulk of the card's content.</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 d-flex align-items-stretch">
+							<div class="card">
+								<img src="https://images.unsplash.com/photo-1574170609519-d1d8d4b71f60?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" class="card-img-top" alt="...">
+								<div class="card-body">
+									<h5 class="card-title">News</h5>
+									<p class="card-text">Some quick example text to build on
+										the card title and make up the bulk of the card's content.</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 d-flex align-items-stretch">
+							<div class="card">
+								<img src="https://images.unsplash.com/photo-1501503069356-3c6b82a17d89?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"class="card-img-top" alt="...">
+								<div class="card-body">
+									<h5 class="card-title">News</h5>
+									<p class="card-text">Some quick example text to build on
+										the card title and make up the bulk of the card's content.</p>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 
 			</main>
