@@ -214,6 +214,7 @@ supports ((position: -webkit-sticky) or (position: sticky)) { .sidebar-sticky
 				<div class="jumbotron jumbotron-fluid">
 					<div class="container">
 						<h1 class="display-4">Welcome To My University</h1>
+						<h2>${account.firstName} ${account.lastName}</h2>
 						<p class="lead">Study Hard & Work Hard & Love Life</p>
 					</div>
 				</div>
