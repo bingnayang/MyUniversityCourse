@@ -29,7 +29,6 @@ public class UniversityAppController {
 		} else {
 		  username = principal.toString();
 		}
-		
 		// Get account info by signin username
 		List<Account> accountInfo = accountService.getAccountInfo(username);
 		// Save accoountInfo to Account object
@@ -39,7 +38,6 @@ public class UniversityAppController {
 			account.setLastName(i.getLastName().toUpperCase().charAt(0)+i.getLastName().substring(1,i.getLastName().length()));
 		}
 		theModel.addAttribute("account",account);
-		
 		return "home-page";
 	}
 	
@@ -52,8 +50,17 @@ public class UniversityAppController {
 	public String instructorPage() {
 		return "instructors";
 	}
-	@GetMapping("/admins")
-	public String adminPage() {
-		return "admins";
+	// Admins Page
+	@GetMapping("/admins/course-manage")
+	public String courseManage() {
+		return "course-management";
+	}
+	@GetMapping("/admins/student-manage")
+	public String studentManage() {
+		return "student-management";
+	}
+	@GetMapping("/admins/instructor-manage")
+	public String instructorManage() {
+		return "instructor-management";
 	}
 }

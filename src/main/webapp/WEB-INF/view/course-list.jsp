@@ -178,19 +178,39 @@ supports ((position: -webkit-sticky) or (position: sticky)) { .sidebar-sticky
 							class="btn btn-outline-primary btn-block"
 							href="${pageContext.request.contextPath}/">Home</a></li>
 						<li class="nav-item mb-2"><a
-							class="btn btn-outline-primary btn-block" href="${pageContext.request.contextPath}/course-list">
-								Course List</a></li>
+							class="btn btn-outline-primary btn-block"
+							href="${pageContext.request.contextPath}/course-list">All Course
+								List</a></li>
 						<security:authorize access="hasRole('STUDENT')">
 							<li class="nav-item mb-2"><a
-							class="btn btn-outline-primary btn-block" href="${pageContext.request.contextPath}/students">Register
-								Course</a>
-							</li>
-						</security:authorize>		
+								class="btn btn-outline-primary btn-block"
+								href="${pageContext.request.contextPath}/students">Register
+									Course</a></li>
+						</security:authorize>
 						<security:authorize access="hasRole('INSTRUCTOR')">
 							<li class="nav-item mb-2"><a
-							class="btn btn-outline-primary btn-block" href="${pageContext.request.contextPath}/instructors">Post Grades</a>
-							</li>
-						</security:authorize>		
+								class="btn btn-outline-primary btn-block"
+								href="${pageContext.request.contextPath}/instructors">Post
+									Grades</a></li>
+						</security:authorize>
+						<security:authorize access="hasRole('ADMIN')">
+							<li class="nav-item mb-2"><a
+								class="btn btn-outline-primary btn-block"
+								href="${pageContext.request.contextPath}/admins/course-manage">Course 
+								Manage</a></li>
+						</security:authorize>
+						<security:authorize access="hasRole('ADMIN')">
+							<li class="nav-item mb-2"><a
+								class="btn btn-outline-primary btn-block"
+								href="${pageContext.request.contextPath}/admins/student-manage">Student 
+								Manage</a></li>
+						</security:authorize>
+						<security:authorize access="hasRole('ADMIN')">
+							<li class="nav-item mb-2"><a
+								class="btn btn-outline-primary btn-block"
+								href="${pageContext.request.contextPath}/admins/instructor-manage">Instructor 
+								Manage</a></li>
+						</security:authorize>
 					</ul>
 				</div>
 			</nav>
@@ -209,9 +229,9 @@ supports ((position: -webkit-sticky) or (position: sticky)) { .sidebar-sticky
 						<table class="table">
 							<thead class="thead-light">
 								<tr>
-									<th scope="col">First Name</th>
-									<th scope="col">First Name</th>
-									<th scope="col">First Name</th>
+									<th scope="col">Code</th>
+									<th scope="col">Name</th>
+									<th scope="col">Credit</th>
 								</tr>
 								<c:forEach var="tempCourse" items="${courses}">
 									<tr>

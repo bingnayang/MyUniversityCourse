@@ -135,7 +135,7 @@ supports ((position: -webkit-sticky) or (position: sticky)) { .sidebar-sticky
 }
 </style>
 
-<title>University Admin Page</title>
+<title>University</title>
 </head>
 <body>
 	<nav
@@ -172,14 +172,29 @@ supports ((position: -webkit-sticky) or (position: sticky)) { .sidebar-sticky
 						<br>
 						<li class="nav-item mb-2"><a
 							class="btn btn-outline-primary btn-block"
-							href="${pageContext.request.contextPath}/">Home</a></li>
+							href="${pageContext.request.contextPath}/">Home</a>
+						</li>
 						<li class="nav-item mb-2"><a
-							class="btn btn-outline-primary btn-block" href="${pageContext.request.contextPath}/course-list">
-								Course List</a></li>	
+							class="btn btn-outline-primary btn-block"
+							href="${pageContext.request.contextPath}/course-list">All Course
+								List</a>
+						</li>
 						<security:authorize access="hasRole('ADMIN')">
 							<li class="nav-item mb-2"><a
 								class="btn btn-outline-primary btn-block"
-								href="${pageContext.request.contextPath}/admins">Course 
+								href="${pageContext.request.contextPath}/admins/course-manage">Course 
+								Manage</a></li>
+						</security:authorize>
+						<security:authorize access="hasRole('ADMIN')">
+							<li class="nav-item mb-2"><a
+								class="btn btn-outline-primary btn-block"
+								href="${pageContext.request.contextPath}/admins/student-manage">Student 
+								Manage</a></li>
+						</security:authorize>
+						<security:authorize access="hasRole('ADMIN')">
+							<li class="nav-item mb-2"><a
+								class="btn btn-outline-primary btn-block"
+								href="${pageContext.request.contextPath}/admins/instructor-manage">Instructor 
 								Manage</a></li>
 						</security:authorize>
 					</ul>
@@ -189,10 +204,9 @@ supports ((position: -webkit-sticky) or (position: sticky)) { .sidebar-sticky
 			<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
 				<div
 					class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-					<h1 class="h2">Dashboard</h1>
+					<h1 class="h2">Course Management</h1>
 					<div class="btn-toolbar mb-2 mb-md-0">
 						<div class="btn-toolbar mb-2 mb-md-0"><security:authentication property="principal.username"/> | <security:authentication property="principal.authorities"/></div>
-
 					</div>
 				</div>
 
