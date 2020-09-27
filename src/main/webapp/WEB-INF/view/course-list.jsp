@@ -218,7 +218,7 @@ supports ((position: -webkit-sticky) or (position: sticky)) { .sidebar-sticky
 			<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
 				<div
 					class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-					<h1 class="h2">Course List</h1>
+					<h1 class="h2">University Courses List</h1>
 					<div class="btn-toolbar mb-2 mb-md-0">					
 						<security:authentication property="principal.username"/> | <security:authentication property="principal.authorities"/>
 					</div>
@@ -232,12 +232,14 @@ supports ((position: -webkit-sticky) or (position: sticky)) { .sidebar-sticky
 									<th scope="col">Code</th>
 									<th scope="col">Name</th>
 									<th scope="col">Credit</th>
+									<th scope="col">College</th>
 								</tr>
 								<c:forEach var="tempCourse" items="${courses}">
 									<tr>
 										<td>${tempCourse.code}</td>
 										<td>${tempCourse.name}</td>
 										<td>${tempCourse.credit}</td>
+										<td>${tempCourse.college}</td>
 									</tr>
 								</c:forEach>
 						</table>

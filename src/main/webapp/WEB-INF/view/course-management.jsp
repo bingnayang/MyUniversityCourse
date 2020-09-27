@@ -2,16 +2,18 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="security"
+	uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 
 <!-- Font Awesome -->
-<link rel="stylesheet" 
+<link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
 <!-- Bootstrap core CSS -->
 <link rel="stylesheet"
@@ -22,6 +24,7 @@
 body {
 	font-size: .875rem;
 }
+
 .feather {
 	width: 16px;
 	height: 16px;
@@ -140,7 +143,9 @@ supports ((position: -webkit-sticky) or (position: sticky)) { .sidebar-sticky
 <body>
 	<nav
 		class="navbar navbar-dark sticky-top bg-primary flex-md-nowrap p-0 shadow">
-		<a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#"> <i class="fas fa-graduation-cap"></i> University</a>
+		<a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#"> <i
+			class="fas fa-graduation-cap"></i> University
+		</a>
 		<button class="navbar-toggler position-absolute d-md-none collapsed"
 			type="button" data-toggle="collapse" data-target="#sidebarMenu"
 			aria-controls="sidebarMenu" aria-expanded="false"
@@ -149,11 +154,12 @@ supports ((position: -webkit-sticky) or (position: sticky)) { .sidebar-sticky
 		</button>
 
 		<ul class="navbar-nav px-3">
-			<li class="nav-item text-nowrap">		
-				<form:form class="form-inline my-2 my-lg-0" action="${pageContext.request.contextPath}/logout" method="POST">
-					<input type="submit" value="Logout" class="btn btn-outline-light my-2 my-sm-0">
-				</form:form>
-			</li>
+			<li class="nav-item text-nowrap"><form:form
+					class="form-inline my-2 my-lg-0"
+					action="${pageContext.request.contextPath}/logout" method="POST">
+					<input type="submit" value="Logout"
+						class="btn btn-outline-light my-2 my-sm-0">
+				</form:form></li>
 		</ul>
 	</nav>
 
@@ -172,30 +178,28 @@ supports ((position: -webkit-sticky) or (position: sticky)) { .sidebar-sticky
 						<br>
 						<li class="nav-item mb-2"><a
 							class="btn btn-outline-primary btn-block"
-							href="${pageContext.request.contextPath}/">Home</a>
-						</li>
+							href="${pageContext.request.contextPath}/">Home</a></li>
 						<li class="nav-item mb-2"><a
 							class="btn btn-outline-primary btn-block"
-							href="${pageContext.request.contextPath}/course-list">All Course
-								List</a>
-						</li>
+							href="${pageContext.request.contextPath}/course-list">All
+								Course List</a></li>
 						<security:authorize access="hasRole('ADMIN')">
 							<li class="nav-item mb-2"><a
 								class="btn btn-outline-primary btn-block"
-								href="${pageContext.request.contextPath}/admins/course-manage">Course 
-								Manage</a></li>
+								href="${pageContext.request.contextPath}/admins/course-manage">Course
+									Manage</a></li>
 						</security:authorize>
 						<security:authorize access="hasRole('ADMIN')">
 							<li class="nav-item mb-2"><a
 								class="btn btn-outline-primary btn-block"
-								href="${pageContext.request.contextPath}/admins/student-manage">Student 
-								Manage</a></li>
+								href="${pageContext.request.contextPath}/admins/student-manage">Student
+									Manage</a></li>
 						</security:authorize>
 						<security:authorize access="hasRole('ADMIN')">
 							<li class="nav-item mb-2"><a
 								class="btn btn-outline-primary btn-block"
-								href="${pageContext.request.contextPath}/admins/instructor-manage">Instructor 
-								Manage</a></li>
+								href="${pageContext.request.contextPath}/admins/instructor-manage">Instructor
+									Manage</a></li>
 						</security:authorize>
 					</ul>
 				</div>
@@ -204,12 +208,82 @@ supports ((position: -webkit-sticky) or (position: sticky)) { .sidebar-sticky
 			<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
 				<div
 					class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-					<h1 class="h2">Course Management</h1>
+					<h1 class="h2">Admin Course Management</h1>
 					<div class="btn-toolbar mb-2 mb-md-0">
-						<div class="btn-toolbar mb-2 mb-md-0"><security:authentication property="principal.username"/> | <security:authentication property="principal.authorities"/></div>
+						<div class="btn-toolbar mb-2 mb-md-0">
+							<security:authentication property="principal.username" />
+							|
+							<security:authentication property="principal.authorities" />
+						</div>
+					</div>
+				</div>
+				<!-- Edit / Delete Course Section-->
+				<div class="card mb-2 bg-light">
+					<div class="card-body">
+						<h5 class="card-title">Edit/Delete Course</h5>
+						<table class="table">
+							<thead class="thead-dark">
+								<tr>
+									<th scope="col">Code</th>
+									<th scope="col">Name</th>
+									<th scope="col">Credit</th>
+									<th scope="col">College</th>
+									<th scope="col">Action</th>
+								</tr>
+								<c:forEach var="tempCourse" items="${courses}">
+									<tr>
+										<td>${tempCourse.code}</td>
+										<td>${tempCourse.name}</td>
+										<td>${tempCourse.credit}</td>
+										<td>${tempCourse.college}</td>
+										<td>EDIT / DELETE</td>
+									</tr>
+								</c:forEach>
+						</table>
 					</div>
 				</div>
 
+				<!-- Add New Course Section-->
+				<div class="card bg-light"">
+					<div class="card-body">
+						<h5 class="card-title">Add New Course</h5>
+						<form:form
+							action="${pageContext.request.contextPath}/admins/new_course"
+							method="POST">
+							<div class="form-group">
+								<label for="courseCode">Course Code</label> <input type="text"
+									class="form-control" name="courseCode">
+							</div>
+							<div class="form-group">
+								<label for="courseName">Course Name</label> <input type="text"
+									class="form-control" name="courseName">
+							</div>
+							<div class="form-group">
+								<label for="courseCredit">Course Credit</label> <select
+									class="form-control" name="courseCredit">
+									<option value=3>3</option>
+									<option value=4>4</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="courseCollege">College</label> <select
+									class="form-control">
+									<option value="College of Education">College of
+										Education</option>
+									<option value="College of Sciences">College of
+										Sciences</option>
+									<option value="College of Nursing & Health">College of
+										Nursing & Health</option>
+									<option value="College of Business">College of
+										Business</option>
+									<option value="College of Liberal Arts & Social Sciences">College
+										of Liberal Arts & Social Sciences</option>
+								</select>
+							</div>
+							<button type="submit" class="btn btn-outline-primary btn-block">Submit</button>
+						</form:form>
+					</div>
+				</div>
 			</main>
 		</div>
 	</div>

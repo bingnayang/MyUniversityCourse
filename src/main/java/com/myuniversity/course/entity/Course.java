@@ -23,6 +23,9 @@ public class Course {
 	
 	@Column(name="credit")
 	private int credit;
+	
+	@Column(name="college")
+	private String college;
 
 	public Course() {
 	}
@@ -57,6 +60,14 @@ public class Course {
 
 	public void setCredit(int credit) {
 		this.credit = credit;
+	}
+
+	public String getCollege() {
+		return college;
+	}
+
+	public void setCollege(String college) {
+		this.college = college;
 	}
 	
 	

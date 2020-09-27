@@ -50,17 +50,5 @@ public class UniversityAppController {
 	public String instructorPage() {
 		return "instructors";
 	}
-	// Admins Page
-	@GetMapping("/admins/course-manage")
-	public String courseManage() {
-		return "course-management";
-	}
-	@GetMapping("/admins/student-manage")
-	public String studentManage() {
-		return "student-management";
-	}
-	@GetMapping("/admins/instructor-manage")
-	public String instructorManage() {
-		return "instructor-management";
-	}
+	
 }
