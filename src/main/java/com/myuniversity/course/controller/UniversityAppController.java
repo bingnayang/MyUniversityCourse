@@ -10,13 +10,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.myuniversity.course.entity.Account;
+import com.myuniversity.course.entity.Course;
 import com.myuniversity.course.service.AccountService;
+import com.myuniversity.course.service.CourseService;
 
 
 @Controller
 public class UniversityAppController {
 	@Autowired
 	private AccountService accountService;
+	@Autowired
+	private CourseService courseService;
 	
 	@GetMapping("/")
 	public String showHome(Model theModel) {
@@ -41,14 +45,22 @@ public class UniversityAppController {
 		return "home-page";
 	}
 	
-	@GetMapping("/students")
-	public String studentPage() {
-		return "students";
+	@GetMapping("/course-list")
+	public String listCourses(Model theModel) {
+		// Get course list from the courseService
+		List<Course> theCourses = courseService.getCourses();
+		theModel.addAttribute("courses",theCourses);
+		return "course-list";
 	}
 	
-	@GetMapping("/instructors")
-	public String instructorPage() {
-		return "instructors";
-	}
+//	@GetMapping("/students")
+//	public String studentPage() {
+//		return "students";
+//	}
+//	
+//	@GetMapping("/instructors")
+//	public String instructorPage() {
+//		return "instructors";
+//	}
 	
 }

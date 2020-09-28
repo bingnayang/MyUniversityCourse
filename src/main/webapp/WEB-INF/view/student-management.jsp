@@ -211,7 +211,22 @@ supports ((position: -webkit-sticky) or (position: sticky)) { .sidebar-sticky
 						<security:authentication property="principal.username"/> | <security:authentication property="principal.authorities"/>
 					</div>
 				</div>
+				<!-- Edit / Delete student Section-->
+				<div class="card mb-2 bg-light">
+					<div class="card-body">
+						<h5 class="card-title">Edit/Delete Student</h5>
+						<table class="table">
+							<thead class="thead-dark">
+								<tr>
+									<th scope="col">Student Id</th>
+									<th scope="col">First Name</th>
+									<th scope="col">Last Name</th>
+									<th scope="col">Action</th>
+								</tr>
 
+						</table>
+					</div>
+				</div>
 
 			</main>
 		</div>
