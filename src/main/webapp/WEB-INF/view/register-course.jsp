@@ -1,34 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="security"
-	uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<!-- Bootstrap CDN -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" 
+	href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<!-- Bootstrap core CSS -->
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
 	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
 	crossorigin="anonymous">
-<!-- Font-Awesome CDN -->
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
-	integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
-	crossorigin="anonymous" />
-<!-- External CSS --> 
-<link href="${pageContext.request.contextPath}/resources/css/dashboard.css" rel="stylesheet" >
-<title>Course List</title>
+<title>Student Page</title>
 </head>
 <body>
-
 	<nav
 		class="navbar navbar-dark sticky-top bg-primary flex-md-nowrap p-0 shadow">
-		<a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#"> <i
-			class="fas fa-graduation-cap"></i> University
-		</a>
+		<a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#"> <i class="fas fa-graduation-cap"></i> University</a>
 		<button class="navbar-toggler position-absolute d-md-none collapsed"
 			type="button" data-toggle="collapse" data-target="#sidebarMenu"
 			aria-controls="sidebarMenu" aria-expanded="false"
@@ -37,12 +32,11 @@
 		</button>
 
 		<ul class="navbar-nav px-3">
-			<li class="nav-item text-nowrap"><form:form
-					class="form-inline my-2 my-lg-0"
-					action="${pageContext.request.contextPath}/logout" method="POST">
-					<input type="submit" value="Logout"
-						class="btn btn-outline-light my-2 my-sm-0">
-				</form:form></li>
+			<li class="nav-item text-nowrap">		
+				<form:form class="form-inline my-2 my-lg-0" action="${pageContext.request.contextPath}/logout" method="POST">
+					<input type="submit" value="Logout" class="btn btn-outline-light my-2 my-sm-0">
+				</form:form>
+			</li>
 		</ul>
 	</nav>
 
@@ -63,27 +57,20 @@
 							class="btn btn-outline-primary btn-block"
 							href="${pageContext.request.contextPath}/">Home</a></li>
 						<li class="nav-item mb-2"><a
-							class="btn btn-outline-primary btn-block"
-							href="${pageContext.request.contextPath}/course-list">All Course
-								List</a></li>
-						<security:authorize access="hasRole('ADMIN')">
+							class="btn btn-outline-primary btn-block" href="${pageContext.request.contextPath}/course-list">
+								Course List</a></li>
+						<security:authorize access="hasRole('STUDENT')">
 							<li class="nav-item mb-2"><a
 								class="btn btn-outline-primary btn-block"
-								href="${pageContext.request.contextPath}/admins/course-manage">Course 
-								Manage</a></li>
+								href="${pageContext.request.contextPath}/students/register-course">Register
+									Course</a></li>
 						</security:authorize>
-						<security:authorize access="hasRole('ADMIN')">
+						<security:authorize access="hasRole('STUDENT')">
 							<li class="nav-item mb-2"><a
-								class="btn btn-outline-primary btn-block"
-								href="${pageContext.request.contextPath}/admins/student-manage">Student 
-								Manage</a></li>
-						</security:authorize>
-						<security:authorize access="hasRole('ADMIN')">
-							<li class="nav-item mb-2"><a
-								class="btn btn-outline-primary btn-block"
-								href="${pageContext.request.contextPath}/admins/instructor-manage">Instructor 
-								Manage</a></li>
-						</security:authorize>
+							class="btn btn-outline-primary btn-block" href="${pageContext.request.contextPath}/students/academics">Academic
+								</a>
+							</li>
+						</security:authorize>		
 					</ul>
 				</div>
 			</nav>
@@ -91,24 +78,10 @@
 			<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
 				<div
 					class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-					<h1 class="h2">Instructor Management</h1>
-					<div class="btn-toolbar mb-2 mb-md-0">					
-						<security:authentication property="principal.username"/> | <security:authentication property="principal.authorities"/>
-					</div>
-				</div>
-				<!-- Edit / Delete instructor Section-->
-				<div class="card mb-2 bg-light">
-					<div class="card-body">
-						<h5 class="card-title">Edit/Delete Instructor</h5>
-						<table class="table">
-							<thead class="thead-dark">
-								<tr>
-									<th scope="col">Instructor Id</th>
-									<th scope="col">First Name</th>
-									<th scope="col">Last Name</th>
-									<th scope="col">Action</th>
-								</tr>
-						</table>
+					<h1 class="h2">Register Course</h1>
+					<div class="btn-toolbar mb-2 mb-md-0">
+											<div class="btn-toolbar mb-2 mb-md-0"><security:authentication property="principal.username"/> | <security:authentication property="principal.authorities"/></div>
+
 					</div>
 				</div>
 
@@ -127,5 +100,7 @@
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
 		integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
 		crossorigin="anonymous"></script>
+
+</body>
 </body>
 </html>

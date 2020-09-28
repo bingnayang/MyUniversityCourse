@@ -18,6 +18,7 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
@@ -36,6 +37,12 @@ public class UniversityAppConfig implements WebMvcConfigurer{
 	private Environment env;
 	// Set up a logger for diagnostic
 	private Logger logger = Logger.getLogger(getClass().getName());
+	
+	// For external CSS file
+	@Override
+	public void addResourceHandlers(final ResourceHandlerRegistry registry) {
+	    registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+	}
 	
 	//Define a bean for ViewResolver
 	@Bean

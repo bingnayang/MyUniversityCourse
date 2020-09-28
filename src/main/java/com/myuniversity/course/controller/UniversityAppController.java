@@ -52,11 +52,7 @@ public class UniversityAppController {
 		theModel.addAttribute("courses",theCourses);
 		return "course-list";
 	}
-	
-//	@GetMapping("/students")
-//	public String studentPage() {
-//		return "students";
-//	}
+
 //	
 //	@GetMapping("/instructors")
 //	public String instructorPage() {
