@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.myuniversity.course.entity.Course;
 import com.myuniversity.course.service.CourseService;
@@ -20,7 +22,11 @@ public class AdminController {
 	public String courseManage(Model theModel) {
 		// Get course list from the courseService
 		List<Course> theCourses = courseService.getCourses();
-		theModel.addAttribute("courses",theCourses);
+		theModel.addAttribute("courses",theCourses);		
+		
+		// Create model attribute to bind form data
+		Course theCourse = new Course();
+		theModel.addAttribute("course",theCourse);
 		
 		return "course-management";
 	}
@@ -31,5 +37,14 @@ public class AdminController {
 	@GetMapping("/admins/instructor-manage")
 	public String instructorManage() {
 		return "instructor-management";
+	}
+	
+	@PostMapping("/admins/new_course")
+	public String saveCourse(@ModelAttribute("course") Course theCourse) {
+
+		// Save the course
+		courseService.saveCourse(theCourse);
+		
+		return "redirect:/admins/course-manage";
 	}
 }

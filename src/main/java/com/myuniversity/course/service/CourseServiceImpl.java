@@ -21,4 +21,11 @@ public class CourseServiceImpl implements CourseService {
 		return courseDAO.getCourses();
 	}
 
+	@Override
+	@Transactional
+	public void saveCourse(Course theCourse) {
+		// TODO Auto-generated method stub
+		courseDAO.saveCourse(theCourse);
+	}
+
 }

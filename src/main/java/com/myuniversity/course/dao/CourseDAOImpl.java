@@ -31,4 +31,12 @@ public class CourseDAOImpl implements CourseDAO {
 		return courses;
 	}
 
+	@Override
+	public void saveCourse(Course theCourse) {
+		// Get current hibernate session
+		Session currentSession = sessionFactory.getCurrentSession();
+		// Save the course
+		currentSession.save(theCourse);
+	}
+
 }

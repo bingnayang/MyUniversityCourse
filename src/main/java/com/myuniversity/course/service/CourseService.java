@@ -6,4 +6,6 @@ import com.myuniversity.course.entity.Course;
 
 public interface CourseService {
 	public List<Course> getCourses();
+
+	public void saveCourse(Course theCourse);
 }

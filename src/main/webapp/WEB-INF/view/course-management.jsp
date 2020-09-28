@@ -249,25 +249,28 @@ supports ((position: -webkit-sticky) or (position: sticky)) { .sidebar-sticky
 						<h5 class="card-title">Add New Course</h5>
 						<form:form
 							action="${pageContext.request.contextPath}/admins/new_course"
+							modelAttribute="course"
 							method="POST">
 							<div class="form-group">
-								<label for="courseCode">Course Code</label> <input type="text"
-									class="form-control" name="courseCode">
+								<label for="courseCode">Course Code</label> 
+								<form:input class="form-control" path="code" required="required"/>
 							</div>
 							<div class="form-group">
-								<label for="courseName">Course Name</label> <input type="text"
-									class="form-control" name="courseName">
+								<label for="courseName">Course Name</label> 
+								<form:input type="text" class="form-control" path="name" required="required"/>
 							</div>
 							<div class="form-group">
-								<label for="courseCredit">Course Credit</label> <select
-									class="form-control" name="courseCredit">
-									<option value=3>3</option>
-									<option value=4>4</option>
-								</select>
+								<label for="courseCredit">Course Credit</label> 
+								<form:select
+									class="form-control" path="credit">
+									<option value="3">3</option>
+									<option value="4">4</option>
+								</form:select>
 							</div>
 							<div class="form-group">
-								<label for="courseCollege">College</label> <select
-									class="form-control">
+								<label for="courseCollege">College</label> 
+								<form:select
+									class="form-control" path="college">
 									<option value="College of Education">College of
 										Education</option>
 									<option value="College of Sciences">College of
@@ -278,7 +281,7 @@ supports ((position: -webkit-sticky) or (position: sticky)) { .sidebar-sticky
 										Business</option>
 									<option value="College of Liberal Arts & Social Sciences">College
 										of Liberal Arts & Social Sciences</option>
-								</select>
+								</form:select>
 							</div>
 							<button type="submit" class="btn btn-outline-primary btn-block">Submit</button>
 						</form:form>
