@@ -26,12 +26,17 @@ public class UniversityAppController {
 	public String showHome(Model theModel) {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		String username;
+		String userrole;
 		Account account = new Account();
 		
 		if (principal instanceof UserDetails) {
 		  username = ((UserDetails)principal).getUsername();
+		  userrole = ((UserDetails)principal).getAuthorities().toString();
+		  System.out.println("UserName: "+username);
+		  System.out.println("UserRole: "+userrole);
 		} else {
 		  username = principal.toString();
+		  userrole = principal.toString();
 		}
 		// Get account info by signin username
 		List<Account> accountInfo = accountService.getAccountInfo(username);
@@ -52,11 +57,5 @@ public class UniversityAppController {
 		theModel.addAttribute("courses",theCourses);
 		return "course-list";
 	}
-
-//	
-//	@GetMapping("/instructors")
-//	public String instructorPage() {
-//		return "instructors";
-//	}
 	
 }

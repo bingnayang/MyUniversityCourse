@@ -44,7 +44,6 @@ public class AdminController {
 
 		// Save the course
 		courseService.saveCourse(theCourse);
-		
 		return "redirect:/admins/course-manage";
 	}
 }

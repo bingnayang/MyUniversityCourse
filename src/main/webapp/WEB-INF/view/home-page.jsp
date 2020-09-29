@@ -18,7 +18,8 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"
 	rel="stylesheet">
 <!-- External CSS --> 
-<link href="${pageContext.request.contextPath}/resources/css/dashboard.css" rel="stylesheet" >
+<link href="${pageContext.request.contextPath}/resources/css/dashboard.css" 
+	rel="stylesheet" >
 
 <title>My University</title>
 </head>
@@ -80,7 +81,7 @@
 						<security:authorize access="hasRole('INSTRUCTOR')">
 							<li class="nav-item mb-2"><a
 								class="btn btn-outline-primary btn-block"
-								href="${pageContext.request.contextPath}/instructors">Post
+								href="${pageContext.request.contextPath}/instructors/post-grade">Post
 									Grades</a></li>
 						</security:authorize>
 						<security:authorize access="hasRole('ADMIN')">
@@ -157,7 +158,6 @@
 						</div>
 					</div>
 				</div>
-
 			</main>
 		</div>
 	</div>

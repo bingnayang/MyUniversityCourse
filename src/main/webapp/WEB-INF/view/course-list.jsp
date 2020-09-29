@@ -80,7 +80,7 @@
 						<security:authorize access="hasRole('INSTRUCTOR')">
 							<li class="nav-item mb-2"><a
 								class="btn btn-outline-primary btn-block"
-								href="${pageContext.request.contextPath}/instructors">Post
+								href="${pageContext.request.contextPath}/instructors/post-grade">Post
 									Grades</a></li>
 						</security:authorize>
 						<security:authorize access="hasRole('ADMIN')">

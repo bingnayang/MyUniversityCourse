@@ -18,6 +18,8 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
 	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
 	crossorigin="anonymous">
+<!-- External CSS --> 
+<link href="${pageContext.request.contextPath}/resources/css/dashboard.css" rel="stylesheet" >
 <title>Student Page</title>
 </head>
 <body>
