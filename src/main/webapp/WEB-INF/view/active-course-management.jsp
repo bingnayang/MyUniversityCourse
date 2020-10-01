@@ -97,26 +97,12 @@
 			<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
 				<div
 					class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-					<h1 class="h2">Instructor Management</h1>
+					<h1 class="h2">Active Courses Management</h1>
 					<div class="btn-toolbar mb-2 mb-md-0">					
 						<security:authentication property="principal.username"/> | <security:authentication property="principal.authorities"/>
 					</div>
 				</div>
-				<!-- Edit / Delete instructor Section-->
-				<div class="card mb-2 bg-light">
-					<div class="card-body">
-						<h5 class="card-title">Edit/Delete Instructor</h5>
-						<table class="table">
-							<thead class="thead-dark">
-								<tr>
-									<th scope="col">Instructor Id</th>
-									<th scope="col">First Name</th>
-									<th scope="col">Last Name</th>
-									<th scope="col">Action</th>
-								</tr>
-						</table>
-					</div>
-				</div>
+
 
 			</main>
 		</div>

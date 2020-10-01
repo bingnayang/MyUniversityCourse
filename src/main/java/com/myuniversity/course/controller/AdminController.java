@@ -38,6 +38,10 @@ public class AdminController {
 	public String instructorManage() {
 		return "instructor-management";
 	}
+	@GetMapping("/admins/active-course-manage")
+	public String activeCourseManage() {
+		return "active-course-management";
+	}
 	
 	@PostMapping("/admins/new_course")
 	public String saveCourse(@ModelAttribute("course") Course theCourse) {

@@ -86,6 +86,12 @@
 								href="${pageContext.request.contextPath}/admins/instructor-manage">Instructor
 									Manage</a></li>
 						</security:authorize>
+						<security:authorize access="hasRole('ADMIN')">
+							<li class="nav-item mb-2"><a
+								class="btn btn-outline-primary btn-block"
+								href="${pageContext.request.contextPath}/admins/active-course-manage">Active Courses 
+								Manage</a></li>
+						</security:authorize>
 					</ul>
 				</div>
 			</nav>
@@ -113,7 +119,7 @@
 									<th scope="col">Name</th>
 									<th scope="col">Credit</th>
 									<th scope="col">College</th>
-									<th scope="col">Action</th>
+<!-- 									<th scope="col">Action</th> -->
 								</tr>
 								<c:forEach var="tempCourse" items="${courses}">
 									<tr>
@@ -121,7 +127,10 @@
 										<td>${tempCourse.name}</td>
 										<td>${tempCourse.credit}</td>
 										<td>${tempCourse.college}</td>
-										<td>EDIT / DELETE</td>
+<!-- 										<td>
+											<a type="button" class="btn-sm btn-outline-info">EDIT</a> |
+											<a type="button" class="btn-sm btn-outline-info">DELETE</a>
+										</td> -->
 									</tr>
 								</c:forEach>
 						</table>
