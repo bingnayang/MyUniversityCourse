@@ -18,8 +18,10 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
 	integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
 	crossorigin="anonymous" />
-<!-- External CSS --> 
-<link href="${pageContext.request.contextPath}/resources/css/dashboard.css" rel="stylesheet" >
+<!-- External CSS -->
+<link
+	href="${pageContext.request.contextPath}/resources/css/dashboard.css"
+	rel="stylesheet">
 <title>Course List</title>
 </head>
 <body>
@@ -64,31 +66,31 @@
 							href="${pageContext.request.contextPath}/">Home</a></li>
 						<li class="nav-item mb-2"><a
 							class="btn btn-outline-primary btn-block"
-							href="${pageContext.request.contextPath}/course-list">All Course
-								List</a></li>
+							href="${pageContext.request.contextPath}/course-list">All
+								Course List</a></li>
 						<security:authorize access="hasRole('ADMIN')">
 							<li class="nav-item mb-2"><a
 								class="btn btn-outline-primary btn-block"
-								href="${pageContext.request.contextPath}/admins/course-manage">Course 
-								Manage</a></li>
+								href="${pageContext.request.contextPath}/admins/course-manage">Course
+									Manage</a></li>
 						</security:authorize>
 						<security:authorize access="hasRole('ADMIN')">
 							<li class="nav-item mb-2"><a
 								class="btn btn-outline-primary btn-block"
-								href="${pageContext.request.contextPath}/admins/student-manage">Student 
-								Manage</a></li>
+								href="${pageContext.request.contextPath}/admins/student-manage">Student
+									Manage</a></li>
 						</security:authorize>
 						<security:authorize access="hasRole('ADMIN')">
 							<li class="nav-item mb-2"><a
 								class="btn btn-outline-primary btn-block"
-								href="${pageContext.request.contextPath}/admins/instructor-manage">Instructor 
-								Manage</a></li>
+								href="${pageContext.request.contextPath}/admins/instructor-manage">Instructor
+									Manage</a></li>
 						</security:authorize>
 						<security:authorize access="hasRole('ADMIN')">
 							<li class="nav-item mb-2"><a
 								class="btn btn-outline-primary btn-block"
-								href="${pageContext.request.contextPath}/admins/active-course-manage">Active Courses 
-								Manage</a></li>
+								href="${pageContext.request.contextPath}/admins/active-course-manage">Active
+									Courses Manage</a></li>
 						</security:authorize>
 					</ul>
 				</div>
@@ -98,11 +100,13 @@
 				<div
 					class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 					<h1 class="h2">Active Courses Management</h1>
-					<div class="btn-toolbar mb-2 mb-md-0">					
-						<security:authentication property="principal.username"/> | <security:authentication property="principal.authorities"/>
+					<div class="btn-toolbar mb-2 mb-md-0">
+						<security:authentication property="principal.username" />
+						|
+						<security:authentication property="principal.authorities" />
 					</div>
 				</div>
-				
+				<!-- Active Course List -->
 				<div>
 					<hr>
 					<div class="container-fluid">
@@ -114,7 +118,7 @@
 									<th scope="col">Time</th>
 									<th scope="col">Day</th>
 								</tr>
- 								<c:forEach items="${activeCourse}" var="activeCourse">
+								<c:forEach items="${activeCourse}" var="activeCourse">
 									<tr>
 										<td>${activeCourse.code}</td>
 										<td>${activeCourse.instructor}</td>
@@ -125,8 +129,36 @@
 						</table>
 					</div>
 				</div>
-				
-				
+				<!-- Add new active course -->
+				<div class="card bg-light"">
+					<div class="card-body">
+						<h5 class="card-title">Add New Active Course</h5>
+						<form:form>
+							<div class="form-group">
+								<label for="courseCode">Course Code</label> <input type="text"
+									class="form-control">
+							</div>
+							<div class="form-group">
+								<label for="courseInstructor">Instructor Name</label> <input
+									type="text" class="form-control">
+							</div>
+							<div class="form-group">
+								<label for="courseTime">Course Time</label> <input type="text"
+									class="form-control">
+							</div>
+							<div class="form-group">
+								<label for="courseDay">Course Day</label> 
+								<select
+									class="form-control" id="exampleFormControlSelect2">
+									<option>Monday | Wednesday | Friday</option>
+									<option>Tuesday | THurday</option>
+								</select>
+							</div>
+							<button type="submit" class="btn btn-outline-primary btn-block">Submit</button>
+						</form:form>
+					</div>
+				</div>
+
 			</main>
 		</div>
 	</div>

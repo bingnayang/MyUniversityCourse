@@ -20,17 +20,10 @@ public class AdminDAOImpl implements AdminDAO {
 	public List<ActiveCourse> getActiveCourse() {
 		// get the current hibernate session
 		Session currentSession = sessionFactory.getCurrentSession();
-		
 		// create a query 
 		Query<ActiveCourse> theQuery = currentSession.createQuery("from ActiveCourse", ActiveCourse.class);
 		// execute query and get result list
-		List<ActiveCourse> activeCourses = theQuery.getResultList();
-		
-		// For testing
-		for(ActiveCourse i: activeCourses) {
-			System.out.println(i.getCode()+" | "+i.getInstructor()+" | "+i.getTime()+" | "+i.getDay());
-		}
-		
+		List<ActiveCourse> activeCourses = theQuery.getResultList();		
 		// return the results
 		return activeCourses;
 	}
