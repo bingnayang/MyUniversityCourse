@@ -102,8 +102,31 @@
 						<security:authentication property="principal.username"/> | <security:authentication property="principal.authorities"/>
 					</div>
 				</div>
-
-
+				
+				<div>
+					<hr>
+					<div class="container-fluid">
+						<table class="table">
+							<thead class="thead-light">
+								<tr>
+									<th scope="col">Course Code</th>
+									<th scope="col">Instructor</th>
+									<th scope="col">Time</th>
+									<th scope="col">Day</th>
+								</tr>
+ 								<c:forEach items="${activeCourse}" var="activeCourse">
+									<tr>
+										<td>${activeCourse.code}</td>
+										<td>${activeCourse.instructor}</td>
+										<td>${activeCourse.time}</td>
+										<td>${activeCourse.day}</td>
+									</tr>
+								</c:forEach>
+						</table>
+					</div>
+				</div>
+				
+				
 			</main>
 		</div>
 	</div>
