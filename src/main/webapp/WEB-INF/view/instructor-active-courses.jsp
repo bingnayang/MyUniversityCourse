@@ -60,7 +60,7 @@
 							href="${pageContext.request.contextPath}/">Home</a></li>
 						<li class="nav-item mb-2"><a
 							class="btn btn-outline-primary btn-block" href="${pageContext.request.contextPath}/course-list">
-								University Course List</a></li>	
+								Course List</a></li>	
 						<security:authorize access="hasRole('INSTRUCTOR')">
 							<li class="nav-item mb-2"><a
 								class="btn btn-outline-primary btn-block"

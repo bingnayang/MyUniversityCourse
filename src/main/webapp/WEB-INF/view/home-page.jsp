@@ -64,7 +64,7 @@
 							href="${pageContext.request.contextPath}/">Home</a></li>
 						<li class="nav-item mb-2"><a
 							class="btn btn-outline-primary btn-block"
-							href="${pageContext.request.contextPath}/course-list">All Course
+							href="${pageContext.request.contextPath}/course-list">University Courses
 								List</a></li>
 						<security:authorize access="hasRole('STUDENT')">
 							<li class="nav-item mb-2"><a
@@ -74,7 +74,14 @@
 						</security:authorize>
 						<security:authorize access="hasRole('STUDENT')">
 							<li class="nav-item mb-2"><a
-							class="btn btn-outline-primary btn-block" href="${pageContext.request.contextPath}/students/academics">Academic
+								class="btn btn-outline-primary btn-block"
+								href="${pageContext.request.contextPath}/students/active-courses">Active
+									Courses</a></li>
+						</security:authorize>
+						<security:authorize access="hasRole('STUDENT')">
+							<li class="nav-item mb-2"><a
+								class="btn btn-outline-primary btn-block" 
+								href="${pageContext.request.contextPath}/students/academics">Academic
 								</a>
 							</li>
 						</security:authorize>	
@@ -83,6 +90,12 @@
 								class="btn btn-outline-primary btn-block"
 								href="${pageContext.request.contextPath}/instructors/post-grade">Post
 									Grades</a></li>
+						</security:authorize>
+						<security:authorize access="hasRole('INSTRUCTOR')">
+							<li class="nav-item mb-2"><a
+								class="btn btn-outline-primary btn-block"
+								href="${pageContext.request.contextPath}/instructors/active-courses">Active 
+								Courses</a></li>
 						</security:authorize>
 						<security:authorize access="hasRole('ADMIN')">
 							<li class="nav-item mb-2"><a

@@ -9,4 +9,8 @@ public class InstructorController {
 	public String instructorPostGrade() {
 		return "post-grade";
 	}
+	@GetMapping("/instructors/active-courses")
+	public String instructorActiveCourses() {
+		return "instructor-active-courses";
+	}
 }

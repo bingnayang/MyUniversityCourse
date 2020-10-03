@@ -45,10 +45,6 @@ public class AdminController {
 	public String activeCourseManage(Model theModel) {
 		// Get active course list
 		List<ActiveCourse> activeCourses = adminService.getActiveCourseList();
-//		System.out.println("Admin Controller: ");
-//		for(ActiveCourse i: activeCoursesList) {
-//			System.out.println(i.getCode()+" | "+i.getInstructor()+" | "+i.getTime()+" | "+i.getDay());
-//		}
 		theModel.addAttribute("activeCourse", activeCourses);
 		return "active-course-management";
 	}
