@@ -10,7 +10,7 @@ public class InstructorController {
 		return "post-grade";
 	}
 	@GetMapping("/instructors/active-courses")
-	public String instructorActiveCourses() {
+	public String activeCourses() {
 		return "instructor-active-courses";
 	}
 }
