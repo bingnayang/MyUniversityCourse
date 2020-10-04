@@ -56,7 +56,10 @@
 							class="rounded mx-auto d-block img-thumbnail"
 							alt="Responsive image"
 							src="https://t4.ftcdn.net/jpg/02/17/96/11/240_F_217961105_JjZe7sYxJHh1cGNz2Re92SOAXZr8GvQP.jpg"
-							width="100" height="100"></li>
+							width="100" height="100">
+						</li>
+						<br>
+						<li><h5 class="text-center">Hi, ${account.firstName} ${account.lastName}</h5></li>
 						<br>
 						<li class="nav-item mb-2"><a
 							class="btn btn-outline-primary btn-block"
@@ -128,6 +131,7 @@
 				<div
 					class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 					<h1 class="h2">University Courses List</h1>
+					<h5>${account.firstName} ${account.lastName}</h5>
 					<div class="btn-toolbar mb-2 mb-md-0">					
 						<security:authentication property="principal.username"/> | <security:authentication property="principal.authorities"/>
 					</div>

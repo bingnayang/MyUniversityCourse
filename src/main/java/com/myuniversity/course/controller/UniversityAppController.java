@@ -24,6 +24,25 @@ public class UniversityAppController {
 	
 	@GetMapping("/")
 	public String showHome(Model theModel) {
+		// Get Account use name
+		Account account = getAccountName();		
+		theModel.addAttribute("account",account);
+		return "home-page";
+	}
+	
+	@GetMapping("/course-list")
+	public String listCourses(Model theModel) {
+		// Get Account use name
+		Account account = getAccountName();
+		// Get course list from the courseService
+		List<Course> theCourses = courseService.getCourses();
+		theModel.addAttribute("courses",theCourses);
+		theModel.addAttribute("account",account);
+		return "course-list";
+	}
+	
+	// Get login account full name
+	public Account getAccountName() {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		String username;
 		String userrole;
@@ -46,16 +65,6 @@ public class UniversityAppController {
 			account.setFirstName(i.getFirstName().toUpperCase().charAt(0)+i.getFirstName().substring(1,i.getFirstName().length()));
 			account.setLastName(i.getLastName().toUpperCase().charAt(0)+i.getLastName().substring(1,i.getLastName().length()));
 		}
-		theModel.addAttribute("account",account);
-		return "home-page";
+		return account;
 	}
-	
-	@GetMapping("/course-list")
-	public String listCourses(Model theModel) {
-		// Get course list from the courseService
-		List<Course> theCourses = courseService.getCourses();
-		theModel.addAttribute("courses",theCourses);
-		return "course-list";
-	}
-	
 }
