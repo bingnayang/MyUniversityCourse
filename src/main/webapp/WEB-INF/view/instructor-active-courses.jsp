@@ -80,9 +80,32 @@
 			<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
 				<div
 					class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-					<h1 class="h2">Welcome</h1> 
+					<h1 class="h2">Active Courses</h1> 
 					<div class="btn-toolbar mb-2 mb-md-0"><security:authentication property="principal.username"/> | <security:authentication property="principal.authorities"/></div>
 				</div>
+				<div>
+					<hr>
+					<div class="container-fluid">
+						<table class="table">
+							<thead class="thead-light">
+								<tr>
+									<th scope="col">Code</th>
+									<th scope="col">Instructor Name</th>
+									<th scope="col">Time</th>
+									<th scope="col">Day</th>
+								</tr>
+ 								<c:forEach items="${instructorActiveCoursesList}" var="adminCourse">
+									<tr>
+										<td>${adminCourse.code}</td>
+										<td>${adminCourse.instructor}</td>
+										<td>${adminCourse.time}</td>
+										<td>${adminCourse.day}</td>
+									</tr>
+								</c:forEach>
+						</table>
+					</div>
+				</div>
+				
 
 			</main>
 		</div>
