@@ -6,4 +6,7 @@ import com.myuniversity.course.entity.ActiveCourse;
 
 public interface AdminService {
 	public List<ActiveCourse> getActiveCourseList();
+
+	public void saveActiveCourse(ActiveCourse theActiveCourse);
+
 }

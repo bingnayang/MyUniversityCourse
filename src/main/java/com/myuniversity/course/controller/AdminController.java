@@ -67,10 +67,13 @@ public class AdminController {
 	// Save new active course to database
 	@PostMapping("/admins/new_active_course")
 	public String saveActiveCourse(@ModelAttribute("active-course") ActiveCourse theActiveCourse) {
+		// For testing
 		System.out.println(theActiveCourse.getCode());
 		System.out.println(theActiveCourse.getInstructor());
 		System.out.println(theActiveCourse.getTime());
 		System.out.println(theActiveCourse.getDay());
+		
+		adminService.saveActiveCourse(theActiveCourse);
 		
 		return "redirect:/admins/active-course-management";
 	}

@@ -28,4 +28,13 @@ public class AdminDAOImpl implements AdminDAO {
 		return activeCourses;
 	}
 
+	@Override
+	public void saveActiveCourse(ActiveCourse theActiveCourse) {
+		// Get current hibernate session
+		Session currentSession = sessionFactory.getCurrentSession();
+		// Save the course
+		currentSession.save(theActiveCourse);
+		
+	}
+
 }

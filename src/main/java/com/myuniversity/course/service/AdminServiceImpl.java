@@ -20,4 +20,11 @@ public class AdminServiceImpl implements AdminService {
 		return adminDAO.getActiveCourse();
 	}
 
+	@Override
+	@Transactional
+	public void saveActiveCourse(ActiveCourse theActiveCourse) {
+		// TODO Auto-generated method stub
+		adminDAO.saveActiveCourse(theActiveCourse);
+	}
+
 }

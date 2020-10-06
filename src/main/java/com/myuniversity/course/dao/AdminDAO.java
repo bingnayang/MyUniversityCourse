@@ -6,6 +6,8 @@ import com.myuniversity.course.entity.ActiveCourse;
 
 public interface AdminDAO {
 
-	List<ActiveCourse> getActiveCourse();
+	public List<ActiveCourse> getActiveCourse();
+
+	public void saveActiveCourse(ActiveCourse theActiveCourse);
 
 }
