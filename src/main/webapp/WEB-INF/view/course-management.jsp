@@ -138,7 +138,7 @@
 				</div>
 
 				<!-- Add New Course Section-->
-				<div class="card bg-light"">
+				<div class="card bg-light">
 					<div class="card-body">
 						<h5 class="card-title">Add New Course</h5>
 						<form:form
@@ -151,7 +151,7 @@
 							</div>
 							<div class="form-group">
 								<label for="courseName">Course Name</label> 
-								<form:input type="text" class="form-control" path="name" required="required"/>
+								<form:input class="form-control" path="name" required="required"/>
 							</div>
 							<div class="form-group">
 								<label for="courseCredit">Course Credit</label> 

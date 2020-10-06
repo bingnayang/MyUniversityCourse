@@ -1,27 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="security"
 	uri="http://www.springframework.org/security/tags"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<!-- Bootstrap CDN -->
+<meta http-equiv="x-ua-compatible" content="ie=edge"> 
+<!-- Font Awesome -->
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<!-- Bootstrap core CSS -->
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
 	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
 	crossorigin="anonymous">
-<!-- Font-Awesome CDN -->
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
-	integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
-	crossorigin="anonymous" />
-<!-- External CSS -->
-<link
-	href="${pageContext.request.contextPath}/resources/css/dashboard.css"
-	rel="stylesheet">
+<!-- External CSS --> 
+<link href="${pageContext.request.contextPath}/resources/css/dashboard.css" rel="stylesheet" >
 <title>Course List</title>
 </head>
 <body>
@@ -118,41 +115,43 @@
 									<th scope="col">Time</th>
 									<th scope="col">Day</th>
 								</tr>
-								<c:forEach items="${activeCourse}" var="activeCourse">
+								<c:forEach items="${activeCourses}" var="activeCourses">
 									<tr>
-										<td>${activeCourse.code}</td>
-										<td>${activeCourse.instructor}</td>
-										<td>${activeCourse.time}</td>
-										<td>${activeCourse.day}</td>
+										<td>${activeCourses.code}</td>
+										<td>${activeCourses.instructor}</td>
+										<td>${activeCourses.time}</td>
+										<td>${activeCourses.day}</td>
 									</tr>
 								</c:forEach>
 						</table>
 					</div>
 				</div>
 				<!-- Add new active course -->
-				<div class="card bg-light"">
+				<div class="card bg-light">
 					<div class="card-body">
 						<h5 class="card-title">Add New Active Course</h5>
-						<form:form>
+						<form:form 
+							action="${pageContext.request.contextPath}/admins/new_active_course" 
+							modelAttribute="activeCourse" method="POST">
 							<div class="form-group">
-								<label for="courseCode">Course Code</label> <input type="text"
-									class="form-control">
+								<label for="courseCode">Course Code</label> 
+								<form:input class="form-control" path="code" required="required"/>
 							</div>
 							<div class="form-group">
-								<label for="courseInstructor">Instructor Name</label> <input
-									type="text" class="form-control">
+								<label for="courseInstructor">Instructor Name</label> 
+								<form:input class="form-control" path="instructor" required="required"/>
 							</div>
 							<div class="form-group">
-								<label for="courseTime">Course Time</label> <input type="text"
-									class="form-control">
+								<label for="courseTime">Course Time</label> 
+								<form:input class="form-control" path="time" required="required"/>
 							</div>
 							<div class="form-group">
 								<label for="courseDay">Course Day</label> 
-								<select
-									class="form-control" id="exampleFormControlSelect2">
-									<option>Monday | Wednesday | Friday</option>
-									<option>Tuesday | THurday</option>
-								</select>
+								<form:select
+									class="form-control" path="day">
+									<option value="M,W,F">Monday | Wednesday | Friday</option>
+									<option value="T,TH">Tuesday | THurday</option>
+								</form:select>
 							</div>
 							<button type="submit" class="btn btn-outline-primary btn-block">Submit</button>
 						</form:form>
