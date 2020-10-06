@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="x-ua-compatible" content="ie=edge"> 
+<meta http-equiv="x-ua-compatible" content="ie=edge">
 <!-- Font Awesome -->
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
@@ -17,8 +17,10 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
 	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
 	crossorigin="anonymous">
-<!-- External CSS --> 
-<link href="${pageContext.request.contextPath}/resources/css/dashboard.css" rel="stylesheet" >
+<!-- External CSS -->
+<link
+	href="${pageContext.request.contextPath}/resources/css/dashboard.css"
+	rel="stylesheet">
 <title>Course List</title>
 </head>
 <body>
@@ -104,51 +106,52 @@
 					</div>
 				</div>
 				<!-- Active Course List -->
-				<div>
-					<hr>
-					<div class="container-fluid">
-						<table class="table">
-							<thead class="thead-light">
-								<tr>
-									<th scope="col">Course Code</th>
-									<th scope="col">Instructor</th>
-									<th scope="col">Time</th>
-									<th scope="col">Day</th>
-								</tr>
-								<c:forEach items="${activeCourses}" var="activeCourses">
+				<div class="card bg-light mb-2">
+					<div class="card-body">
+						<div class="container-fluid">
+							<table class="table">
+								<thead class="thead-light">
 									<tr>
-										<td>${activeCourses.code}</td>
-										<td>${activeCourses.instructor}</td>
-										<td>${activeCourses.time}</td>
-										<td>${activeCourses.day}</td>
+										<th scope="col">Course Code</th>
+										<th scope="col">Instructor</th>
+										<th scope="col">Time</th>
+										<th scope="col">Day</th>
 									</tr>
-								</c:forEach>
-						</table>
+									<c:forEach items="${activeCourses}" var="activeCourses">
+										<tr>
+											<td>${activeCourses.code}</td>
+											<td>${activeCourses.instructor}</td>
+											<td>${activeCourses.time}</td>
+											<td>${activeCourses.day}</td>
+										</tr>
+									</c:forEach>
+							</table>
+						</div>
 					</div>
 				</div>
 				<!-- Add new active course -->
 				<div class="card bg-light">
 					<div class="card-body">
 						<h5 class="card-title">Add New Active Course</h5>
-						<form:form 
-							action="${pageContext.request.contextPath}/admins/new_active_course" 
+						<form:form
+							action="${pageContext.request.contextPath}/admins/new_active_course"
 							modelAttribute="activeCourse" method="POST">
 							<div class="form-group">
-								<label for="courseCode">Course Code</label> 
-								<form:input class="form-control" path="code" required="required"/>
+								<label for="courseCode">Course Code</label>
+								<form:input class="form-control" path="code" required="required" />
 							</div>
 							<div class="form-group">
-								<label for="courseInstructor">Instructor Name</label> 
-								<form:input class="form-control" path="instructor" required="required"/>
+								<label for="courseInstructor">Instructor Name</label>
+								<form:input class="form-control" path="instructor"
+									required="required" />
 							</div>
 							<div class="form-group">
-								<label for="courseTime">Course Time</label> 
-								<form:input class="form-control" path="time" required="required"/>
+								<label for="courseTime">Course Time</label>
+								<form:input class="form-control" path="time" required="required" />
 							</div>
 							<div class="form-group">
-								<label for="courseDay">Course Day</label> 
-								<form:select
-									class="form-control" path="day">
+								<label for="courseDay">Course Day</label>
+								<form:select class="form-control" path="day">
 									<option value="M,W,F">Monday | Wednesday | Friday</option>
 									<option value="T,TH">Tuesday | THurday</option>
 								</form:select>
