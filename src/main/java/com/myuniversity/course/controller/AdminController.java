@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.myuniversity.course.entity.AdminAccount;
 import com.myuniversity.course.entity.ActiveCourse;
 import com.myuniversity.course.entity.Course;
+import com.myuniversity.course.entity.InstructorAccount;
 import com.myuniversity.course.entity.StudentAccount;
 import com.myuniversity.course.service.AdminService;
 import com.myuniversity.course.service.CourseService;
@@ -42,7 +43,9 @@ public class AdminController {
 	}
 	
 	@GetMapping("/admins/instructor-manage")
-	public String instructorManage() {
+	public String instructorManage(Model theModel) {
+		List<InstructorAccount> instructorList = adminService.getInstructorList();
+		theModel.addAttribute("instructorList", instructorList);
 		return "instructor-management";
 	}
 	

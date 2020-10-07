@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.myuniversity.course.entity.AdminAccount;
+import com.myuniversity.course.entity.InstructorAccount;
 import com.myuniversity.course.entity.StudentAccount;
 import com.myuniversity.course.entity.ActiveCourse;
 
@@ -50,6 +51,18 @@ public class AdminDAOImpl implements AdminDAO {
 		List<StudentAccount> studentList = theQuery.getResultList();		
 		// return the results
 		return studentList;
+	}
+
+	@Override
+	public List<InstructorAccount> getInstructorList() {
+		// get the current hibernate session
+		Session currentSession = sessionFactory.getCurrentSession();
+		// create a query 
+		Query<InstructorAccount> theQuery = currentSession.createQuery("from InstructorAccount", InstructorAccount.class);
+		// execute query and get result list
+		List<InstructorAccount> instructorList = theQuery.getResultList();		
+		// return the results
+		return instructorList;
 	}
 
 

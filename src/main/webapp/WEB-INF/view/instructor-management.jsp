@@ -108,11 +108,19 @@
 						<table class="table">
 							<thead class="thead-light">
 								<tr>
-									<th scope="col">Instructor Id</th>
 									<th scope="col">First Name</th>
 									<th scope="col">Last Name</th>
-									<th scope="col">Action</th>
+									<th scope="col">Email</th>
+									<th scope="col">Department</th>
 								</tr>
+ 								<c:forEach var="instructorList" items="${instructorList}">
+									<tr>
+										<td>${instructorList.firstName}</td>
+										<td>${instructorList.lastName}</td>
+										<td>${instructorList.userEmail}</td>
+ 										<td>${instructorList.department}</td>
+									</tr>
+								</c:forEach>
 						</table>
 					</div>
 				</div>
