@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.myuniversity.course.entity.AdminAccount;
 import com.myuniversity.course.entity.ActiveCourse;
 import com.myuniversity.course.entity.Course;
+import com.myuniversity.course.entity.StudentAccount;
 import com.myuniversity.course.service.AdminService;
 import com.myuniversity.course.service.CourseService;
 
@@ -34,10 +35,12 @@ public class AdminController {
 		return "course-management";
 	}
 	@GetMapping("/admins/student-manage")
-	public String studentManage() {
-		List<AdminAccount> studentList = adminService.getStudents();
+	public String studentManage(Model theModel) {
+		List<StudentAccount> studentList = adminService.getStudentList();
+		theModel.addAttribute("studentList", studentList);
 		return "student-management";
 	}
+	
 	@GetMapping("/admins/instructor-manage")
 	public String instructorManage() {
 		return "instructor-management";
@@ -67,10 +70,10 @@ public class AdminController {
 	@PostMapping("/admins/new_active_course")
 	public String saveActiveCourse(@ModelAttribute("active-course") ActiveCourse theActiveCourse) {
 		// For testing
-		System.out.println(theActiveCourse.getCode());
-		System.out.println(theActiveCourse.getInstructor());
-		System.out.println(theActiveCourse.getTime());
-		System.out.println(theActiveCourse.getDay());
+//		System.out.println(theActiveCourse.getCode());
+//		System.out.println(theActiveCourse.getInstructor());
+//		System.out.println(theActiveCourse.getTime());
+//		System.out.println(theActiveCourse.getDay());
 		
 		adminService.saveActiveCourse(theActiveCourse);
 		

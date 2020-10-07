@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="student_accounts")
+@Table(name="instructor_accounts")
 public class InstructorAccount {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -24,8 +24,8 @@ public class InstructorAccount {
 	@Column(name="email")
 	private String userEmail;
 
-	@Column(name="major")
-	private String major;
+	@Column(name="department")
+	private String department;
 	
 	public InstructorAccount() {
 	}
@@ -62,19 +62,18 @@ public class InstructorAccount {
 		this.userEmail = userEmail;
 	}
 
-	public String getMajor() {
-		return major;
+	public String getDepartment() {
+		return department;
 	}
 
-	public void setMajor(String major) {
-		this.major = major;
+	public void setDepartment(String department) {
+		this.department = department;
 	}
 
 	@Override
 	public String toString() {
 		return "InstructorAccount [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", userEmail="
-				+ userEmail + ", major=" + major + "]";
+				+ userEmail + ", department=" + department + "]";
 	}
-
 	
 }

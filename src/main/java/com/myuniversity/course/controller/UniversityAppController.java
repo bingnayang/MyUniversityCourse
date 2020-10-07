@@ -24,29 +24,27 @@ public class UniversityAppController {
 	
 	@GetMapping("/")
 	public String showHome(Model theModel) {
-		// Get Account use name
-//		AdminAccount account = getAccountName();		
-//		theModel.addAttribute("account",account);
+
+		getAccountName();		
 		return "home-page";
 	}
 	
 	@GetMapping("/course-list")
 	public String listCourses(Model theModel) {
-		// Get Account use name
-		AdminAccount account = getAccountName();
+
 		// Get course list from the courseService
 		List<Course> theCourses = courseService.getCourses();
 		theModel.addAttribute("courses",theCourses);
-		theModel.addAttribute("account",account);
+
 		return "course-list";
 	}
 	
 	// Get login account full name
-	public AdminAccount getAccountName() {
+	public String getAccountName() {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		String username;
 		String userrole;
-		AdminAccount account = new AdminAccount();
+
 		
 		if (principal instanceof UserDetails) {
 		  username = ((UserDetails)principal).getUsername();
@@ -57,14 +55,14 @@ public class UniversityAppController {
 		  username = principal.toString();
 		  userrole = principal.toString();
 		}
-		// Get account info by signin username
-		List<AdminAccount> accountInfo = accountService.getAccountInfo(username);
-		// Save accoountInfo to Account object
-		for(AdminAccount i: accountInfo) {
-			// Use setter to set Account values and capitalize first letter of the name
-			account.setFirstName(i.getFirstName().toUpperCase().charAt(0)+i.getFirstName().substring(1,i.getFirstName().length()));
-			account.setLastName(i.getLastName().toUpperCase().charAt(0)+i.getLastName().substring(1,i.getLastName().length()));
-		}
-		return account;
+//		// Get account info by sign-in username
+//		List<AdminAccount> accountInfo = accountService.getAccountInfo(username);
+//		// Save accoountInfo to Account object
+//		for(AdminAccount i: accountInfo) {
+//			// Use setter to set Account values and capitalize first letter of the name
+//			account.setFirstName(i.getFirstName().toUpperCase().charAt(0)+i.getFirstName().substring(1,i.getFirstName().length()));
+//			account.setLastName(i.getLastName().toUpperCase().charAt(0)+i.getLastName().substring(1,i.getLastName().length()));
+//		}
+		return null;
 	}
 }

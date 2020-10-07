@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.myuniversity.course.dao.AdminDAO;
 import com.myuniversity.course.entity.AdminAccount;
+import com.myuniversity.course.entity.StudentAccount;
 import com.myuniversity.course.entity.ActiveCourse;
 
 @Service
@@ -30,11 +31,10 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	@Transactional
-	public List<AdminAccount> getStudents() {
+	public List<StudentAccount> getStudentList() {
 		// TODO Auto-generated method stub
-		return adminDAO.getStudents();
+		return adminDAO.getStudentList();
 	}
-
 
 
 }
