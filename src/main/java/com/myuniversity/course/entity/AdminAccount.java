@@ -8,8 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="accounts")
-public class Account {
+@Table(name="admin_accounts")
+public class AdminAccount {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="Id")
@@ -21,10 +21,10 @@ public class Account {
 	@Column(name="last_name")
 	private String lastName;
 	
-	@Column(name="username")
+	@Column(name="email")
 	private String userEmail;
 
-	public Account() {
+	public AdminAccount() {
 	}
 
 	public int getId() {

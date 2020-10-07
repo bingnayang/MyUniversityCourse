@@ -8,7 +8,7 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.myuniversity.course.entity.Account;
+import com.myuniversity.course.entity.AdminAccount;
 import com.myuniversity.course.entity.ActiveCourse;
 
 @Repository
@@ -19,7 +19,7 @@ public class InstructorDAOImpl implements InstructorDAO {
 	private SessionFactory sessionFactory;
 	
 	@Override
-	public List<ActiveCourse> getInstructorActiveCourses(Account account) {
+	public List<ActiveCourse> getInstructorActiveCourses(AdminAccount account) {
 		// get the current hibernate session
 		Session currentSession = sessionFactory.getCurrentSession();
 		String firstName = account.getFirstName();

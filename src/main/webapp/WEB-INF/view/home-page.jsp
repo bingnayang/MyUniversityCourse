@@ -53,12 +53,11 @@
 				style="padding-left: 5px; padding-right: 5px;">
 				<div class="sidebar-sticky pt-3">
 					<ul class="nav flex-column">
-						<li class="nav-item"><img
+						<li class="nav-item mb-2"><img
 							class="rounded mx-auto d-block img-thumbnail"
 							alt="Responsive image"
 							src="https://t4.ftcdn.net/jpg/02/17/96/11/240_F_217961105_JjZe7sYxJHh1cGNz2Re92SOAXZr8GvQP.jpg"
 							width="100" height="100"></li>
-						<br>
 						<li class="nav-item mb-2"><a
 							class="btn btn-outline-primary btn-block"
 							href="${pageContext.request.contextPath}/">Home</a></li>
@@ -138,7 +137,7 @@
 				<div class="jumbotron jumbotron-fluid">
 					<div class="container">
 						<h1 class="display-4">Welcome To My University</h1>
-						<h2>${account.firstName} ${account.lastName}</h2>
+<%-- 						<h2>${account.firstName} ${account.lastName}</h2> --%>
 						<p class="lead">Study Hard & Work Hard & Love Life</p>
 					</div>
 				</div>

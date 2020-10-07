@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.myuniversity.course.entity.AdminAccount;
 import com.myuniversity.course.entity.ActiveCourse;
 import com.myuniversity.course.entity.Course;
 import com.myuniversity.course.service.AdminService;
@@ -22,13 +23,11 @@ public class AdminController {
 	@Autowired
 	private AdminService adminService;
 	
-	// Admins Page
 	@GetMapping("/admins/course-manage")
 	public String courseManage(Model theModel) {
 		// Get course list
 		List<Course> theCourses = courseService.getCourses();
 		theModel.addAttribute("courses",theCourses);	
-
 		// Create model attribute to bind form data
 		Course theCourse = new Course();
 		theModel.addAttribute("course",theCourse);
@@ -36,6 +35,7 @@ public class AdminController {
 	}
 	@GetMapping("/admins/student-manage")
 	public String studentManage() {
+		List<AdminAccount> studentList = adminService.getStudents();
 		return "student-management";
 	}
 	@GetMapping("/admins/instructor-manage")
@@ -48,11 +48,10 @@ public class AdminController {
 		// Get active course list
 		List<ActiveCourse> activeCourses = adminService.getActiveCourseList();
 		theModel.addAttribute("activeCourses", activeCourses);
-		
 		// Create model attribute to bind form data
 		ActiveCourse theCourse = new ActiveCourse();
-		theModel.addAttribute("activeCourse",theCourse); // modelAttribute="activeCourse"
-		
+		// modelAttribute="activeCourse"
+		theModel.addAttribute("activeCourse",theCourse); 
 		return "active-course-management";
 	}
 

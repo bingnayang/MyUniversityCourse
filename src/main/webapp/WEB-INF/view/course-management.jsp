@@ -55,18 +55,17 @@
 				style="padding-left: 5px; padding-right: 5px;">
 				<div class="sidebar-sticky pt-3">
 					<ul class="nav flex-column">
-						<li class="nav-item"><img
+						<li class="nav-item mb-2"><img
 							class="rounded mx-auto d-block img-thumbnail"
 							alt="Responsive image"
 							src="https://t4.ftcdn.net/jpg/02/17/96/11/240_F_217961105_JjZe7sYxJHh1cGNz2Re92SOAXZr8GvQP.jpg"
 							width="100" height="100"></li>
-						<br>
 						<li class="nav-item mb-2"><a
 							class="btn btn-outline-primary btn-block"
 							href="${pageContext.request.contextPath}/">Home</a></li>
 						<li class="nav-item mb-2"><a
 							class="btn btn-outline-primary btn-block"
-							href="${pageContext.request.contextPath}/course-list">All
+							href="${pageContext.request.contextPath}/course-list">University
 								Course List</a></li>
 						<security:authorize access="hasRole('ADMIN')">
 							<li class="nav-item mb-2"><a
@@ -89,7 +88,7 @@
 						<security:authorize access="hasRole('ADMIN')">
 							<li class="nav-item mb-2"><a
 								class="btn btn-outline-primary btn-block"
-								href="${pageContext.request.contextPath}/admins/active-course-manage">Active Courses 
+								href="${pageContext.request.contextPath}/admins/active-course-management">Active Courses 
 								Manage</a></li>
 						</security:authorize>
 					</ul>
@@ -113,7 +112,7 @@
 					<div class="card-body">
 						<h5 class="card-title">Edit/Delete Course</h5>
 						<table class="table">
-							<thead class="thead-dark">
+							<thead class="thead-light">
 								<tr>
 									<th scope="col">Code</th>
 									<th scope="col">Name</th>

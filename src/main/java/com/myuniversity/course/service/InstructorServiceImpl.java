@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.myuniversity.course.dao.InstructorDAO;
-import com.myuniversity.course.entity.Account;
+import com.myuniversity.course.entity.AdminAccount;
 import com.myuniversity.course.entity.ActiveCourse;
 
 @Service
@@ -17,7 +17,7 @@ public class InstructorServiceImpl implements InstructorService {
 	
 	@Override
 	@Transactional
-	public List<ActiveCourse> getInstructorActiveCourses(Account account) {
+	public List<ActiveCourse> getInstructorActiveCourses(AdminAccount account) {
 		// TODO Auto-generated method stub
 		return instructorDAO.getInstructorActiveCourses(account);
 	}

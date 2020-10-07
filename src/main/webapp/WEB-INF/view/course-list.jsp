@@ -34,7 +34,6 @@
 			aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-
 		<ul class="navbar-nav px-3">
 			<li class="nav-item text-nowrap"><form:form
 					class="form-inline my-2 my-lg-0"
@@ -52,15 +51,13 @@
 				style="padding-left: 5px; padding-right: 5px;">
 				<div class="sidebar-sticky pt-3">
 					<ul class="nav flex-column">
-						<li class="nav-item"><img
+						<li class="nav-item mb-2"><img
 							class="rounded mx-auto d-block img-thumbnail"
 							alt="Responsive image"
 							src="https://t4.ftcdn.net/jpg/02/17/96/11/240_F_217961105_JjZe7sYxJHh1cGNz2Re92SOAXZr8GvQP.jpg"
 							width="100" height="100">
 						</li>
-						<br>
-						<li><h5 class="text-center">Hi, ${account.firstName} ${account.lastName}</h5></li>
-						<br>
+
 						<li class="nav-item mb-2"><a
 							class="btn btn-outline-primary btn-block"
 							href="${pageContext.request.contextPath}/">Home</a></li>
@@ -131,9 +128,8 @@
 				<div
 					class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 					<h1 class="h2">University Courses List</h1>
-					<h5>${account.firstName} ${account.lastName}</h5>
 					<div class="btn-toolbar mb-2 mb-md-0">					
-						<security:authentication property="principal.username"/> | <security:authentication property="principal.authorities"/>
+					   <span style="color: #007bff;">${account.firstName} ${account.lastName} </span> | <security:authentication property="principal.username"/> | <security:authentication property="principal.authorities"/>
 					</div>
 				</div>
 				<div>

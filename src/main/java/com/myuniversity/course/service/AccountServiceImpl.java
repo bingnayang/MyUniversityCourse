@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.myuniversity.course.dao.AccountDAO;
-import com.myuniversity.course.entity.Account;
+import com.myuniversity.course.entity.AdminAccount;
 
 @Service
 public class AccountServiceImpl implements AccountService {
@@ -16,7 +16,7 @@ public class AccountServiceImpl implements AccountService {
 	
 	@Override
 	@Transactional
-	public List<Account> getAccountInfo(String username) {
+	public List<AdminAccount> getAccountInfo(String username) {
 		return accountDAO.getAccountInfo(username);
 	}
 

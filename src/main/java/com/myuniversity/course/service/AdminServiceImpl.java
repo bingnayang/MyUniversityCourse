@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.myuniversity.course.dao.AdminDAO;
+import com.myuniversity.course.entity.AdminAccount;
 import com.myuniversity.course.entity.ActiveCourse;
 
 @Service
@@ -26,5 +27,14 @@ public class AdminServiceImpl implements AdminService {
 		// TODO Auto-generated method stub
 		adminDAO.saveActiveCourse(theActiveCourse);
 	}
+
+	@Override
+	@Transactional
+	public List<AdminAccount> getStudents() {
+		// TODO Auto-generated method stub
+		return adminDAO.getStudents();
+	}
+
+
 
 }

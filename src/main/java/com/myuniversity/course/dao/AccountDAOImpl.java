@@ -8,7 +8,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import com.myuniversity.course.entity.Account;
+import com.myuniversity.course.entity.AdminAccount;
 
 
 @Repository
@@ -18,7 +18,7 @@ public class AccountDAOImpl implements AccountDAO {
 	private SessionFactory sessionFactory;
 	
 	@Override
-	public List<Account> getAccountInfo(String username) {
+	public List<AdminAccount> getAccountInfo(String username) {
 		// get the current hibernate session
 		Session currentSession = sessionFactory.getCurrentSession();
 		
@@ -26,9 +26,9 @@ public class AccountDAOImpl implements AccountDAO {
 		Query query = currentSession.createQuery(hql);
 		query.setParameter("username_email",username);
 		
-		List<Account> results = query.getResultList();
+		List<AdminAccount> results = query.getResultList();
 //			
-		for(Account i: results) {
+		for(AdminAccount i: results) {
 			System.out.println(i.getId());
 			System.out.println(i.getFirstName());
 			System.out.println(i.getLastName());
