@@ -80,7 +80,7 @@
 			<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
 				<div
 					class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-					<h1 class="h2">Active Courses</h1> 
+					<h1 class="h2">Instructor Active Courses</h1> 
 					<div class="btn-toolbar mb-2 mb-md-0"><security:authentication property="principal.username"/> | <security:authentication property="principal.authorities"/></div>
 				</div>
 				<div>
@@ -95,7 +95,7 @@
 									<th scope="col">Day</th>
 									<th scope="col">View</th>
 								</tr>
- 								<c:forEach items="${instructorActiveCoursesList}" var="adminCourse">
+<%--  								<c:forEach items="${instructorActiveCoursesList}" var="adminCourse">
 									<tr>
 										<td>${adminCourse.code}</td>
 										<td>${adminCourse.instructor}</td>
@@ -103,7 +103,7 @@
 										<td>${adminCourse.day}</td>
 										<td><button class="btn btn-sm btn-outline-primary">View Detail</button></td>
 									</tr>
-								</c:forEach>
+								</c:forEach> --%>
 						</table>
 					</div>
 				</div>

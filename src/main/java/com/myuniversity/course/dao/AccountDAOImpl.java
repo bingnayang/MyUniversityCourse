@@ -8,7 +8,10 @@ import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import com.myuniversity.course.entity.ActiveCourse;
 import com.myuniversity.course.entity.AdminAccount;
+import com.myuniversity.course.entity.InstructorAccount;
 
 
 @Repository
@@ -16,26 +19,45 @@ public class AccountDAOImpl implements AccountDAO {
 	// need to inject the session factory
 	@Autowired
 	private SessionFactory sessionFactory;
-	
+
 	@Override
-	public List<AdminAccount> getAccountInfo(String username) {
+	public String getAccountFullName(String username, String userrole) {
+		
 		// get the current hibernate session
 		Session currentSession = sessionFactory.getCurrentSession();
+		String accountFullName = "";
+		String firstName = "";
+		String lastName = "";
+		String query = "";
 		
-		String hql = "from Account a where a.userEmail = :username_email";
-		Query query = currentSession.createQuery(hql);
-		query.setParameter("username_email",username);
-		
-		List<AdminAccount> results = query.getResultList();
-//			
-		for(AdminAccount i: results) {
-			System.out.println(i.getId());
-			System.out.println(i.getFirstName());
-			System.out.println(i.getLastName());
-			System.out.println(i.getUserEmail());
+		switch (userrole) {
+		case "[ROLE_INSTRUCTOR]":
+			query = "from InstructorAccount name where name.userEmail = :email";
+			Query<InstructorAccount> theQuery = currentSession.createQuery(query);
+			theQuery.setParameter("email",username);
+			List<InstructorAccount> courses = theQuery.getResultList();
+			
+			for(InstructorAccount temp: courses) {
+				firstName = temp.getFirstName();
+				lastName = temp.getLastName();
+			}
+			accountFullName =firstName +" "+lastName;
+//			System.out.println("Full Name: "+accountFullName);
+			break;
+		case "[ROLE_STUDENT]":
+//			accountFullName ="ROLE_STUDENT";
+			break;	
+		case "[ROLE_ADMIN]":
+//			accountFullName ="ROLE_ADMIN";
+			break;
+		default:
+//			accountFullName ="NULL";
+			break;
 		}
-		// return the results		
-		return results;
+		
+		return accountFullName;
 	}
+	
+
 
 }

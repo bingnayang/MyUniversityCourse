@@ -5,3 +5,4 @@
 * Maven
 * MySQL
 * Bootstrap
+* Hibernate

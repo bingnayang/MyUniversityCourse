@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.myuniversity.course.entity.AdminAccount;
+import com.myuniversity.course.entity.InstructorAccount;
 import com.myuniversity.course.entity.ActiveCourse;
 import com.myuniversity.course.service.AccountService;
 import com.myuniversity.course.service.InstructorService;
@@ -28,18 +29,18 @@ public class InstructorController {
 	
 	@GetMapping("/instructors/active-courses")
 	public String activeCourses(Model theModel) {
-		AdminAccount account = getAccountName();
-		List<ActiveCourse> instructorCoursesList = instructorService.getInstructorActiveCourses(account);
-		theModel.addAttribute("instructorActiveCoursesList",instructorCoursesList);
+//		AdminAccount account = getAccountName();
+//		List<ActiveCourse> instructorCoursesList = instructorService.getInstructorActiveCourses(account);
+//		theModel.addAttribute("instructorActiveCoursesList",instructorCoursesList);
+		System.out.println(getAccountName());
 		return "instructor-active-courses";
 	}
 	
 	// Get login account full name
-	public AdminAccount getAccountName() {
+	public String getAccountName() {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		String username;
-		String userrole;
-		AdminAccount account = new AdminAccount();
+		String username = "";
+		String userrole = "";
 		
 		if (principal instanceof UserDetails) {
 		  username = ((UserDetails)principal).getUsername();
@@ -50,14 +51,9 @@ public class InstructorController {
 		  username = principal.toString();
 		  userrole = principal.toString();
 		}
-		// Get account info by signin username
-		List<AdminAccount> accountInfo = accountService.getAccountInfo(username);
-		// Save accoountInfo to Account object
-		for(AdminAccount i: accountInfo) {
-			// Use setter to set Account values and capitalize first letter of the name
-			account.setFirstName(i.getFirstName().toUpperCase().charAt(0)+i.getFirstName().substring(1,i.getFirstName().length()));
-			account.setLastName(i.getLastName().toUpperCase().charAt(0)+i.getLastName().substring(1,i.getLastName().length()));
-		}
-		return account;
+		// Get account full name by signin username
+		String accountFullName = accountService.getAccountFullName(username,userrole);
+
+		return accountFullName;
 	}
 }
