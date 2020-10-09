@@ -35,7 +35,7 @@ public class InstructorController {
 		return "instructor-active-courses";
 	}
 	
-	// Get login account full name
+	// Get login user full name
 	public String getAccountName() {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		String username = "";

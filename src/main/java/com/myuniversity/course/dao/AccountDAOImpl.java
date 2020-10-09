@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.myuniversity.course.entity.AdminAccount;
 import com.myuniversity.course.entity.InstructorAccount;
+import com.myuniversity.course.entity.StudentAccount;
 
 
 @Repository
@@ -43,13 +44,22 @@ public class AccountDAOImpl implements AccountDAO {
 //			System.out.println("Full Name: "+accountFullName);
 			break;
 		case "[ROLE_STUDENT]":
-//			accountFullName ="ROLE_STUDENT";
+			query = "from StudentAccount name where name.userEmail = :email";
+			Query<StudentAccount> theStudentQuery = currentSession.createQuery(query);
+			theStudentQuery.setParameter("email",username);
+			List<StudentAccount> studentCourses = theStudentQuery.getResultList();
+			
+			for(StudentAccount temp: studentCourses) {
+				firstName = temp.getFirstName();
+				lastName = temp.getLastName();
+			}
+			accountFullName =firstName +" "+lastName;
+//			System.out.println("Full Name: "+accountFullName);
 			break;	
 		case "[ROLE_ADMIN]":
 //			accountFullName ="ROLE_ADMIN";
 			break;
 		default:
-//			accountFullName ="NULL";
 			break;
 		}
 		

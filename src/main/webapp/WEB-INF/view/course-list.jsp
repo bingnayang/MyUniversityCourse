@@ -57,7 +57,6 @@
 							src="https://t4.ftcdn.net/jpg/02/17/96/11/240_F_217961105_JjZe7sYxJHh1cGNz2Re92SOAXZr8GvQP.jpg"
 							width="100" height="100">
 						</li>
-
 						<li class="nav-item mb-2"><a
 							class="btn btn-outline-primary btn-block"
 							href="${pageContext.request.contextPath}/">Home</a></li>

@@ -1,7 +1,5 @@
 package com.myuniversity.course.controller;
 
-import java.util.List;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,7 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class StudentController {
-
 	
 	@GetMapping("/students/register-course")
 	public String studentPage() {
@@ -21,6 +18,8 @@ public class StudentController {
 	}
 	@GetMapping("/students/active-courses")
 	public String activeCourses(Model theModel) {
+		
+		
 		return "student-active-courses";
 	}
 }

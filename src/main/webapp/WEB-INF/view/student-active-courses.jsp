@@ -49,30 +49,36 @@
 				style="padding-left: 5px; padding-right: 5px;">
 				<div class="sidebar-sticky pt-3">
 					<ul class="nav flex-column">
-						<li class="nav-item"><img
+						<li class="nav-item mb-2"><img
 							class="rounded mx-auto d-block img-thumbnail"
 							alt="Responsive image"
 							src="https://t4.ftcdn.net/jpg/02/17/96/11/240_F_217961105_JjZe7sYxJHh1cGNz2Re92SOAXZr8GvQP.jpg"
 							width="100" height="100"></li>
-						<br>
 						<li class="nav-item mb-2"><a
 							class="btn btn-outline-primary btn-block"
 							href="${pageContext.request.contextPath}/">Home</a></li>
 						<li class="nav-item mb-2"><a
 							class="btn btn-outline-primary btn-block" href="${pageContext.request.contextPath}/course-list">
-								Course List</a></li>	
-						<security:authorize access="hasRole('INSTRUCTOR')">
+								University Courses List</a></li>	
+						<security:authorize access="hasRole('STUDENT')">
 							<li class="nav-item mb-2"><a
 								class="btn btn-outline-primary btn-block"
-								href="${pageContext.request.contextPath}/instructors/post-grade">Post
-									Grades</a></li>
+								href="${pageContext.request.contextPath}/students/register-course">Register
+									Course</a></li>
 						</security:authorize>
-						<security:authorize access="hasRole('INSTRUCTOR')">
+						<security:authorize access="hasRole('STUDENT')">
 							<li class="nav-item mb-2"><a
 								class="btn btn-outline-primary btn-block"
-								href="${pageContext.request.contextPath}/instructors/active-courses">Active 
-								Courses</a></li>
+								href="${pageContext.request.contextPath}/students/active-courses">Active
+									Courses</a></li>
 						</security:authorize>
+						<security:authorize access="hasRole('STUDENT')">
+							<li class="nav-item mb-2"><a
+								class="btn btn-outline-primary btn-block" 
+								href="${pageContext.request.contextPath}/students/academics">Academic
+								</a>
+							</li>
+						</security:authorize>	
 					</ul>
 				</div>
 			</nav>
