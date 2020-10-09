@@ -95,7 +95,7 @@
 									<th scope="col">Day</th>
 									<th scope="col">View</th>
 								</tr>
-<%--  								<c:forEach items="${instructorActiveCoursesList}" var="adminCourse">
+  								<c:forEach items="${instructorActiveCoursesList}" var="adminCourse">
 									<tr>
 										<td>${adminCourse.code}</td>
 										<td>${adminCourse.instructor}</td>
@@ -103,7 +103,7 @@
 										<td>${adminCourse.day}</td>
 										<td><button class="btn btn-sm btn-outline-primary">View Detail</button></td>
 									</tr>
-								</c:forEach> --%>
+								</c:forEach>
 						</table>
 					</div>
 				</div>

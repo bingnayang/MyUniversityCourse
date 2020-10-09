@@ -1,6 +1,5 @@
 package com.myuniversity.course.dao;
 
-import java.util.Iterator;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -9,7 +8,6 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.myuniversity.course.entity.ActiveCourse;
 import com.myuniversity.course.entity.AdminAccount;
 import com.myuniversity.course.entity.InstructorAccount;
 

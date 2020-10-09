@@ -29,10 +29,9 @@ public class InstructorController {
 	
 	@GetMapping("/instructors/active-courses")
 	public String activeCourses(Model theModel) {
-//		AdminAccount account = getAccountName();
-//		List<ActiveCourse> instructorCoursesList = instructorService.getInstructorActiveCourses(account);
-//		theModel.addAttribute("instructorActiveCoursesList",instructorCoursesList);
-		System.out.println(getAccountName());
+		String accountName = getAccountName();
+		List<ActiveCourse> instructorCoursesList = instructorService.getInstructorActiveCourses(accountName);
+		theModel.addAttribute("instructorActiveCoursesList",instructorCoursesList);
 		return "instructor-active-courses";
 	}
 	

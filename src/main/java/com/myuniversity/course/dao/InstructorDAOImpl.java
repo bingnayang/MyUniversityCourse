@@ -19,17 +19,14 @@ public class InstructorDAOImpl implements InstructorDAO {
 	private SessionFactory sessionFactory;
 	
 	@Override
-	public List<ActiveCourse> getInstructorActiveCourses(AdminAccount account) {
+	public List<ActiveCourse> getInstructorActiveCourses(String accountName) {
 		// get the current hibernate session
 		Session currentSession = sessionFactory.getCurrentSession();
-		String firstName = account.getFirstName();
-		String lastName = account.getLastName();
-		String fullName = firstName+" "+lastName;
 		
 		String hql = "from ActiveCourse a where a.instructor = :instructor";
 		// create a query 
 		Query<ActiveCourse> theQuery = currentSession.createQuery(hql, ActiveCourse.class);
-		theQuery.setParameter("instructor",fullName);
+		theQuery.setParameter("instructor",accountName);
 		
 		// execute query and get result list
 		List<ActiveCourse> courses = theQuery.getResultList();

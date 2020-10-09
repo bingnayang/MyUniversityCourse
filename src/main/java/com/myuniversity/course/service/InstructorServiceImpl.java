@@ -17,9 +17,9 @@ public class InstructorServiceImpl implements InstructorService {
 	
 	@Override
 	@Transactional
-	public List<ActiveCourse> getInstructorActiveCourses(AdminAccount account) {
+	public List<ActiveCourse> getInstructorActiveCourses(String accountName) {
 		// TODO Auto-generated method stub
-		return instructorDAO.getInstructorActiveCourses(account);
+		return instructorDAO.getInstructorActiveCourses(accountName);
 	}
 
 }

@@ -6,5 +6,5 @@ import com.myuniversity.course.entity.AdminAccount;
 import com.myuniversity.course.entity.ActiveCourse;
 
 public interface InstructorDAO {
-	List<ActiveCourse> getInstructorActiveCourses(AdminAccount account);
+	List<ActiveCourse> getInstructorActiveCourses(String accountName);
 }
