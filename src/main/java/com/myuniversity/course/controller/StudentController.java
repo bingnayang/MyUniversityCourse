@@ -33,6 +33,7 @@ public class StudentController {
 	public String activeCourses(Model theModel) {
 		String accountName = getAccountName();
 		List<InProgressCourse> studentInProgressCourse = studentService.getInProgressCourses(accountName);
+		theModel.addAttribute("studentInProgressCourse",studentInProgressCourse);
 		return "student-active-courses";
 	}
 	
