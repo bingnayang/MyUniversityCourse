@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.myuniversity.course.entity.ActiveCourse;
 import com.myuniversity.course.entity.InProgressCourse;
 import com.myuniversity.course.service.AccountService;
 import com.myuniversity.course.service.StudentService;
@@ -22,7 +23,11 @@ public class StudentController {
 	private StudentService studentService;
 	
 	@GetMapping("/students/register-course")
-	public String studentPage() {
+	public String studentRegisterCourse(Model theModel) {
+		
+		// Create model attribute to bind form data
+		ActiveCourse registerCourse = new ActiveCourse();
+		theModel.addAttribute("registerCourse",registerCourse);
 		return "register-course";
 	}
 	@GetMapping("/students/academics")

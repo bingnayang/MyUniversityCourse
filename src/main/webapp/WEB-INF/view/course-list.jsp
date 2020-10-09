@@ -18,8 +18,10 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
 	integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
 	crossorigin="anonymous" />
-<!-- External CSS --> 
-<link href="${pageContext.request.contextPath}/resources/css/dashboard.css" rel="stylesheet" >
+<!-- External CSS -->
+<link
+	href="${pageContext.request.contextPath}/resources/css/dashboard.css"
+	rel="stylesheet">
 <title>Course List</title>
 </head>
 <body>
@@ -55,15 +57,14 @@
 							class="rounded mx-auto d-block img-thumbnail"
 							alt="Responsive image"
 							src="https://t4.ftcdn.net/jpg/02/17/96/11/240_F_217961105_JjZe7sYxJHh1cGNz2Re92SOAXZr8GvQP.jpg"
-							width="100" height="100">
-						</li>
+							width="100" height="100"></li>
 						<li class="nav-item mb-2"><a
 							class="btn btn-outline-primary btn-block"
 							href="${pageContext.request.contextPath}/">Home</a></li>
 						<li class="nav-item mb-2"><a
 							class="btn btn-outline-primary btn-block"
-							href="${pageContext.request.contextPath}/course-list">University Courses
-								List</a></li>
+							href="${pageContext.request.contextPath}/course-list">University
+								Courses List</a></li>
 						<security:authorize access="hasRole('STUDENT')">
 							<li class="nav-item mb-2"><a
 								class="btn btn-outline-primary btn-block"
@@ -73,16 +74,15 @@
 						<security:authorize access="hasRole('STUDENT')">
 							<li class="nav-item mb-2"><a
 								class="btn btn-outline-primary btn-block"
-								href="${pageContext.request.contextPath}/students/active-courses">Active
+								href="${pageContext.request.contextPath}/students/active-courses">In-Progress
 									Courses</a></li>
 						</security:authorize>
 						<security:authorize access="hasRole('STUDENT')">
 							<li class="nav-item mb-2"><a
-								class="btn btn-outline-primary btn-block" 
+								class="btn btn-outline-primary btn-block"
 								href="${pageContext.request.contextPath}/students/academics">Academic
-								</a>
-							</li>
-						</security:authorize>	
+							</a></li>
+						</security:authorize>
 						<security:authorize access="hasRole('INSTRUCTOR')">
 							<li class="nav-item mb-2"><a
 								class="btn btn-outline-primary btn-block"
@@ -92,32 +92,32 @@
 						<security:authorize access="hasRole('INSTRUCTOR')">
 							<li class="nav-item mb-2"><a
 								class="btn btn-outline-primary btn-block"
-								href="${pageContext.request.contextPath}/instructors/active-courses">Active 
-								Courses</a></li>
+								href="${pageContext.request.contextPath}/instructors/active-courses">Active
+									Courses</a></li>
 						</security:authorize>
 						<security:authorize access="hasRole('ADMIN')">
 							<li class="nav-item mb-2"><a
 								class="btn btn-outline-primary btn-block"
-								href="${pageContext.request.contextPath}/admins/course-manage">Course 
-								Manage</a></li>
+								href="${pageContext.request.contextPath}/admins/course-manage">Course
+									Manage</a></li>
 						</security:authorize>
 						<security:authorize access="hasRole('ADMIN')">
 							<li class="nav-item mb-2"><a
 								class="btn btn-outline-primary btn-block"
-								href="${pageContext.request.contextPath}/admins/student-manage">Student 
-								Manage</a></li>
+								href="${pageContext.request.contextPath}/admins/student-manage">Student
+									Manage</a></li>
 						</security:authorize>
 						<security:authorize access="hasRole('ADMIN')">
 							<li class="nav-item mb-2"><a
 								class="btn btn-outline-primary btn-block"
-								href="${pageContext.request.contextPath}/admins/instructor-manage">Instructor 
-								Manage</a></li>
+								href="${pageContext.request.contextPath}/admins/instructor-manage">Instructor
+									Manage</a></li>
 						</security:authorize>
 						<security:authorize access="hasRole('ADMIN')">
 							<li class="nav-item mb-2"><a
 								class="btn btn-outline-primary btn-block"
-								href="${pageContext.request.contextPath}/admins/active-course-management">Active Courses 
-								Manage</a></li>
+								href="${pageContext.request.contextPath}/admins/active-course-management">Active
+									Courses Manage</a></li>
 						</security:authorize>
 					</ul>
 				</div>
@@ -127,33 +127,62 @@
 				<div
 					class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 					<h1 class="h2">University Courses List</h1>
-					<div class="btn-toolbar mb-2 mb-md-0">					
-					   <%-- <span style="color: #007bff;">${account.firstName} ${account.lastName} </span> --%> <security:authentication property="principal.username"/> | <security:authentication property="principal.authorities"/>
+					<div class="btn-toolbar mb-2 mb-md-0">
+						<%-- <span style="color: #007bff;">${account.firstName} ${account.lastName} </span> --%>
+						<security:authentication property="principal.username" />
+						|
+						<security:authentication property="principal.authorities" />
 					</div>
 				</div>
-				<div>
-					<hr>
-					<div class="container-fluid">
-						<table class="table">
-							<thead class="thead-light">
-								<tr>
-									<th scope="col">Code</th>
-									<th scope="col">Name</th>
-									<th scope="col">Credit</th>
-									<th scope="col">College</th>
-								</tr>
-								<c:forEach var="tempCourse" items="${courses}">
+				<div class="card bg-light mb-2">
+					<div class="card-body">
+					<h4>Courses Catalog</h4>
+						<div class="container-fluid">
+							<table class="table">
+								<thead class="thead-light">
 									<tr>
-										<td>${tempCourse.code}</td>
-										<td>${tempCourse.name}</td>
-										<td>${tempCourse.credit}</td>
-										<td>${tempCourse.college}</td>
+										<th scope="col">Code</th>
+										<th scope="col">Name</th>
+										<th scope="col">Credit</th>
+										<th scope="col">College</th>
 									</tr>
-								</c:forEach>
-						</table>
+									<c:forEach var="tempCourse" items="${courses}">
+										<tr>
+											<td>${tempCourse.code}</td>
+											<td>${tempCourse.name}</td>
+											<td>${tempCourse.credit}</td>
+											<td>${tempCourse.college}</td>
+										</tr>
+									</c:forEach>
+							</table>
+						</div>
 					</div>
 				</div>
 
+				<div class="card bg-light mb-2">
+					<div class="card-body">
+						<h4>Active Courses</h4>
+						<div class="container-fluid">
+							<table class="table">
+								<thead class="thead-light">
+									<tr>
+										<th scope="col">Course Code</th>
+										<th scope="col">Instructor</th>
+										<th scope="col">Time</th>
+										<th scope="col">Day</th>
+									</tr>
+									<c:forEach items="${activeCourses}" var="activeCourses">
+										<tr>
+											<td>${activeCourses.code}</td>
+											<td>${activeCourses.instructor}</td>
+											<td>${activeCourses.time}</td>
+											<td>${activeCourses.day}</td>
+										</tr>
+									</c:forEach>
+							</table>
+						</div>
+					</div>
+				</div>
 			</main>
 		</div>
 	</div>

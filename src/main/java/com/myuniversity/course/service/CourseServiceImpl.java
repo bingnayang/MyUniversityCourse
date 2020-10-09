@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.myuniversity.course.dao.CourseDAO;
+import com.myuniversity.course.entity.ActiveCourse;
 import com.myuniversity.course.entity.Course;
 
 @Service
@@ -26,6 +27,13 @@ public class CourseServiceImpl implements CourseService {
 	public void saveCourse(Course theCourse) {
 		// TODO Auto-generated method stub
 		courseDAO.saveCourse(theCourse);
+	}
+
+	@Override
+	@Transactional
+	public List<ActiveCourse> getActiveCourses() {
+		// TODO Auto-generated method stub
+		return courseDAO.getActiveCourses();
 	}
 
 }

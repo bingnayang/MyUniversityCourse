@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.myuniversity.course.entity.ActiveCourse;
 import com.myuniversity.course.entity.AdminAccount;
 import com.myuniversity.course.entity.Course;
 import com.myuniversity.course.service.AccountService;
@@ -35,7 +36,9 @@ public class UniversityAppController {
 		// Get course list from the courseService
 		List<Course> theCourses = courseService.getCourses();
 		theModel.addAttribute("courses",theCourses);
-
+		// Get active course list from the courseService
+		List<ActiveCourse> theActiveCourses = courseService.getActiveCourses();
+		theModel.addAttribute("activeCourses",theActiveCourses);
 		return "course-list";
 	}
 	

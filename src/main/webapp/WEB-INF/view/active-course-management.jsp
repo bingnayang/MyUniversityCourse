@@ -116,7 +116,7 @@
 										<th scope="col">Time</th>
 										<th scope="col">Day</th>
 									</tr>
-									<c:forEach items="${activeCourses}" var="activeCourses">
+									<c:forEach items="${activeCoursesManage}" var="activeCourses">
 										<tr>
 											<td>${activeCourses.code}</td>
 											<td>${activeCourses.instructor}</td>
@@ -134,7 +134,7 @@
 						<h5 class="card-title">Add New Active Course</h5>
 						<form:form
 							action="${pageContext.request.contextPath}/admins/new_active_course"
-							modelAttribute="activeCourse" method="POST">
+							modelAttribute="activeCourseManage" method="POST">
 							<div class="form-group">
 								<label for="courseCode">Course Code</label>
 								<form:input class="form-control" path="code" required="required" />

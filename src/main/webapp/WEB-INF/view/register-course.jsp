@@ -2,30 +2,36 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="security"
+	uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 
 <!-- Font Awesome -->
-<link rel="stylesheet" 
+<link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
 <!-- Bootstrap core CSS -->
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
 	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
 	crossorigin="anonymous">
-<!-- External CSS --> 
-<link href="${pageContext.request.contextPath}/resources/css/dashboard.css" rel="stylesheet" >
+<!-- External CSS -->
+<link
+	href="${pageContext.request.contextPath}/resources/css/dashboard.css"
+	rel="stylesheet">
 <title>Student Page</title>
 </head>
 <body>
 	<nav
 		class="navbar navbar-dark sticky-top bg-primary flex-md-nowrap p-0 shadow">
-		<a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#"> <i class="fas fa-graduation-cap"></i> University</a>
+		<a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#"> <i
+			class="fas fa-graduation-cap"></i> University
+		</a>
 		<button class="navbar-toggler position-absolute d-md-none collapsed"
 			type="button" data-toggle="collapse" data-target="#sidebarMenu"
 			aria-controls="sidebarMenu" aria-expanded="false"
@@ -34,11 +40,12 @@
 		</button>
 
 		<ul class="navbar-nav px-3">
-			<li class="nav-item text-nowrap">		
-				<form:form class="form-inline my-2 my-lg-0" action="${pageContext.request.contextPath}/logout" method="POST">
-					<input type="submit" value="Logout" class="btn btn-outline-light my-2 my-sm-0">
-				</form:form>
-			</li>
+			<li class="nav-item text-nowrap"><form:form
+					class="form-inline my-2 my-lg-0"
+					action="${pageContext.request.contextPath}/logout" method="POST">
+					<input type="submit" value="Logout"
+						class="btn btn-outline-light my-2 my-sm-0">
+				</form:form></li>
 		</ul>
 	</nav>
 
@@ -58,7 +65,8 @@
 							class="btn btn-outline-primary btn-block"
 							href="${pageContext.request.contextPath}/">Home</a></li>
 						<li class="nav-item mb-2"><a
-							class="btn btn-outline-primary btn-block" href="${pageContext.request.contextPath}/course-list">
+							class="btn btn-outline-primary btn-block"
+							href="${pageContext.request.contextPath}/course-list">
 								University Courses List</a></li>
 						<security:authorize access="hasRole('STUDENT')">
 							<li class="nav-item mb-2"><a
@@ -69,16 +77,15 @@
 						<security:authorize access="hasRole('STUDENT')">
 							<li class="nav-item mb-2"><a
 								class="btn btn-outline-primary btn-block"
-								href="${pageContext.request.contextPath}/students/active-courses">Active
+								href="${pageContext.request.contextPath}/students/active-courses">In-Progress
 									Courses</a></li>
 						</security:authorize>
 						<security:authorize access="hasRole('STUDENT')">
 							<li class="nav-item mb-2"><a
-								class="btn btn-outline-primary btn-block" 
+								class="btn btn-outline-primary btn-block"
 								href="${pageContext.request.contextPath}/students/academics">Academic
-								</a>
-							</li>
-						</security:authorize>			
+							</a></li>
+						</security:authorize>
 					</ul>
 				</div>
 			</nav>
@@ -88,11 +95,29 @@
 					class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 					<h1 class="h2">Register Course</h1>
 					<div class="btn-toolbar mb-2 mb-md-0">
-											<div class="btn-toolbar mb-2 mb-md-0"><security:authentication property="principal.username"/> | <security:authentication property="principal.authorities"/></div>
+						<div class="btn-toolbar mb-2 mb-md-0">
+							<security:authentication property="principal.username" />
+							|
+							<security:authentication property="principal.authorities" />
+						</div>
 
 					</div>
 				</div>
-
+				<div class="card bg-light">
+					<div class="card-body">
+						<h5 class="card-title">Add New Course</h5>
+						<form:form
+							action="${pageContext.request.contextPath}/students/register-course"
+							modelAttribute="registerCourse"
+							method="POST">
+							<div class="form-group">
+								<label for="courseCode">Course Code</label> 
+								<form:input class="form-control" path="course_code" required="required"/>
+							</div>
+							<button type="submit" class="btn btn-outline-primary btn-block">Submit</button>
+						</form:form>
+					</div>
+				</div>
 			</main>
 		</div>
 	</div>

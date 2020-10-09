@@ -53,11 +53,11 @@ public class AdminController {
 	public String activeCourseManage(Model theModel) {
 		// Get active course list
 		List<ActiveCourse> activeCourses = adminService.getActiveCourseList();
-		theModel.addAttribute("activeCourses", activeCourses);
+		theModel.addAttribute("activeCoursesManage", activeCourses);
 		// Create model attribute to bind form data
 		ActiveCourse theCourse = new ActiveCourse();
 		// modelAttribute="activeCourse"
-		theModel.addAttribute("activeCourse",theCourse); 
+		theModel.addAttribute("activeCourseManage",theCourse); 
 		return "active-course-management";
 	}
 

@@ -8,6 +8,7 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.myuniversity.course.entity.ActiveCourse;
 import com.myuniversity.course.entity.Course;
 
 @Repository
@@ -37,6 +38,21 @@ public class CourseDAOImpl implements CourseDAO {
 		Session currentSession = sessionFactory.getCurrentSession();
 		// Save the course
 		currentSession.save(theCourse);
+	}
+
+	@Override
+	public List<ActiveCourse> getActiveCourses() {
+		// get the current hibernate session
+		Session currentSession = sessionFactory.getCurrentSession();
+				
+		// create a query 
+		Query<ActiveCourse> theQuery = currentSession.createQuery("from ActiveCourse", ActiveCourse.class);
+		
+		// execute query and get result list
+		List<ActiveCourse> courses = theQuery.getResultList();
+				
+		// return the results		
+		return courses;
 	}
 
 }

@@ -69,7 +69,7 @@
 						<security:authorize access="hasRole('STUDENT')">
 							<li class="nav-item mb-2"><a
 								class="btn btn-outline-primary btn-block"
-								href="${pageContext.request.contextPath}/students/active-courses">Active
+								href="${pageContext.request.contextPath}/students/active-courses">In-Progress
 									Courses</a></li>
 						</security:authorize>
 						<security:authorize access="hasRole('STUDENT')">
