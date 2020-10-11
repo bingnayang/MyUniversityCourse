@@ -57,7 +57,17 @@ public class AccountDAOImpl implements AccountDAO {
 //			System.out.println("Full Name: "+accountFullName);
 			break;	
 		case "[ROLE_ADMIN]":
-//			accountFullName ="ROLE_ADMIN";
+			query = "from AdminAccount name where name.userEmail = :email";
+			Query<AdminAccount> theAdminQuery = currentSession.createQuery(query);
+			theAdminQuery.setParameter("email",username);
+			List<AdminAccount> adminCourses = theAdminQuery.getResultList();
+			
+			for(AdminAccount temp: adminCourses) {
+				firstName = temp.getFirstName();
+				lastName = temp.getLastName();
+			}
+			accountFullName =firstName +" "+lastName;
+//			System.out.println("Full Name: "+accountFullName);
 			break;
 		default:
 			break;

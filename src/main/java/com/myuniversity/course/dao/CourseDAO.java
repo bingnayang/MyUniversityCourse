@@ -7,9 +7,7 @@ import com.myuniversity.course.entity.Course;
 
 public interface CourseDAO {
 	public List<Course> getCourses();
-
 	public void saveCourse(Course theCourse);
-
 	public List<ActiveCourse> getActiveCourses();
 
 }

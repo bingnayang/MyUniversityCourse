@@ -137,7 +137,11 @@
 							modelAttribute="activeCourseManage" method="POST">
 							<div class="form-group">
 								<label for="courseCode">Course Code</label>
-								<form:input class="form-control" path="code" required="required" />
+								<form:select class="form-control" path="code">
+								    <c:forEach items="${theCourseCode}" var="category">
+								        <option value="${category.code}">${category.code}</option>
+								    </c:forEach>
+								</form:select>
 							</div>
 							<div class="form-group">
 								<label for="courseInstructor">Instructor Name</label>

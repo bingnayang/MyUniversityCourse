@@ -24,6 +24,7 @@ public class AdminController {
 	private CourseService courseService;
 	@Autowired
 	private AdminService adminService;
+
 	
 	@GetMapping("/admins/course-manage")
 	public String courseManage(Model theModel) {
@@ -35,6 +36,7 @@ public class AdminController {
 		theModel.addAttribute("course",theCourse);
 		return "course-management";
 	}
+	
 	@GetMapping("/admins/student-manage")
 	public String studentManage(Model theModel) {
 		List<StudentAccount> studentList = adminService.getStudentList();
@@ -56,8 +58,10 @@ public class AdminController {
 		theModel.addAttribute("activeCoursesManage", activeCourses);
 		// Create model attribute to bind form data
 		ActiveCourse theCourse = new ActiveCourse();
-		// modelAttribute="activeCourse"
 		theModel.addAttribute("activeCourseManage",theCourse); 
+		// Get course code list
+		List<Course> theCourseCode = courseService.getCourses();
+		theModel.addAttribute("theCourseCode",theCourseCode);
 		return "active-course-management";
 	}
 
@@ -78,7 +82,7 @@ public class AdminController {
 //		System.out.println(theActiveCourse.getTime());
 //		System.out.println(theActiveCourse.getDay());
 		
-		adminService.saveActiveCourse(theActiveCourse);
+//		adminService.saveActiveCourse(theActiveCourse);
 		
 		return "redirect:/admins/active-course-management";
 	}

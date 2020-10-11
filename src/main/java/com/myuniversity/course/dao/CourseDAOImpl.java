@@ -20,14 +20,11 @@ public class CourseDAOImpl implements CourseDAO {
 	@Override
 	public List<Course> getCourses() {
 		// get the current hibernate session
-		Session currentSession = sessionFactory.getCurrentSession();
-				
+		Session currentSession = sessionFactory.getCurrentSession();	
 		// create a query 
 		Query<Course> theQuery = currentSession.createQuery("from Course", Course.class);
-		
 		// execute query and get result list
-		List<Course> courses = theQuery.getResultList();
-				
+		List<Course> courses = theQuery.getResultList();		
 		// return the results		
 		return courses;
 	}
@@ -43,16 +40,14 @@ public class CourseDAOImpl implements CourseDAO {
 	@Override
 	public List<ActiveCourse> getActiveCourses() {
 		// get the current hibernate session
-		Session currentSession = sessionFactory.getCurrentSession();
-				
+		Session currentSession = sessionFactory.getCurrentSession();	
 		// create a query 
 		Query<ActiveCourse> theQuery = currentSession.createQuery("from ActiveCourse", ActiveCourse.class);
-		
 		// execute query and get result list
-		List<ActiveCourse> courses = theQuery.getResultList();
-				
+		List<ActiveCourse> courses = theQuery.getResultList();	
 		// return the results		
 		return courses;
 	}
+
 
 }

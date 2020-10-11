@@ -9,4 +9,5 @@ public interface CourseService {
 	public List<Course> getCourses();
 	public void saveCourse(Course theCourse);
 	public List<ActiveCourse> getActiveCourses();
+
 }

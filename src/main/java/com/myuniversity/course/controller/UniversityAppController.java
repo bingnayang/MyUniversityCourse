@@ -26,7 +26,9 @@ public class UniversityAppController {
 	@GetMapping("/")
 	public String showHome(Model theModel) {
 
-		getAccountName();		
+		String fullName = getAccountName();		
+		System.out.println("Full Name: "+fullName);
+		theModel.addAttribute("fullName",fullName);
 		return "home-page";
 	}
 	
@@ -45,27 +47,21 @@ public class UniversityAppController {
 	// Get login account full name
 	public String getAccountName() {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		String username;
-		String userrole;
-
+		String username = "";
+		String userrole = "";
 		
 		if (principal instanceof UserDetails) {
 		  username = ((UserDetails)principal).getUsername();
 		  userrole = ((UserDetails)principal).getAuthorities().toString();
-		  System.out.println("UserName: "+username);
-		  System.out.println("UserRole: "+userrole);
 		} else {
 		  username = principal.toString();
 		  userrole = principal.toString();
 		}
-//		// Get account info by sign-in username
-//		List<AdminAccount> accountInfo = accountService.getAccountInfo(username);
-//		// Save accoountInfo to Account object
-//		for(AdminAccount i: accountInfo) {
-//			// Use setter to set Account values and capitalize first letter of the name
-//			account.setFirstName(i.getFirstName().toUpperCase().charAt(0)+i.getFirstName().substring(1,i.getFirstName().length()));
-//			account.setLastName(i.getLastName().toUpperCase().charAt(0)+i.getLastName().substring(1,i.getLastName().length()));
-//		}
-		return null;
+		  System.out.println("getAccountName() = UserName: "+username);
+		  System.out.println("getAccountName() = UserRole: "+userrole);
+		// Get account full name by signin username
+		String accountFullName = accountService.getAccountFullName(username,userrole);
+		System.out.println("getAccountName() = Full Name: "+accountFullName);
+		return accountFullName;
 	}
 }
