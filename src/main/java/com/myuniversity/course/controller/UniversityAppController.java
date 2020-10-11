@@ -1,6 +1,8 @@
 package com.myuniversity.course.controller;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -27,8 +29,13 @@ public class UniversityAppController {
 	public String showHome(Model theModel) {
 
 		String fullName = getAccountName();		
-		System.out.println("Full Name: "+fullName);
-		theModel.addAttribute("fullName",fullName);
+		// Capitalize the first letter
+		String fullNameCaps = Arrays.stream(fullName.split("\\s+"))
+		        .map(t -> t.substring(0, 1).toUpperCase() + t.substring(1))
+		        .collect(Collectors.joining(" "));
+		
+		System.out.println("Full Name: "+fullNameCaps);
+		theModel.addAttribute("fullName",fullNameCaps);
 		return "home-page";
 	}
 	
@@ -57,11 +64,11 @@ public class UniversityAppController {
 		  username = principal.toString();
 		  userrole = principal.toString();
 		}
-		  System.out.println("getAccountName() = UserName: "+username);
-		  System.out.println("getAccountName() = UserRole: "+userrole);
+//		  System.out.println("getAccountName() = UserName: "+username);
+//		  System.out.println("getAccountName() = UserRole: "+userrole);
 		// Get account full name by signin username
 		String accountFullName = accountService.getAccountFullName(username,userrole);
-		System.out.println("getAccountName() = Full Name: "+accountFullName);
+//		System.out.println("getAccountName() = Full Name: "+accountFullName);
 		return accountFullName;
 	}
 }
