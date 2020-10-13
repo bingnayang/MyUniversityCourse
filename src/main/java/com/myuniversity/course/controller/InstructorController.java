@@ -8,8 +8,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.myuniversity.course.entity.AdminAccount;
+import com.myuniversity.course.entity.InProgressCourse;
 import com.myuniversity.course.entity.InstructorAccount;
 import com.myuniversity.course.entity.ActiveCourse;
 import com.myuniversity.course.service.AccountService;
@@ -33,6 +35,13 @@ public class InstructorController {
 		List<ActiveCourse> instructorCoursesList = instructorService.getInstructorActiveCourses(accountName);
 		theModel.addAttribute("instructorActiveCoursesList",instructorCoursesList);
 		return "instructor-active-courses";
+	}
+	
+	@GetMapping("/instructors/view-students")
+	public String courseStudents(@RequestParam("activeCourseCode") String theCode, Model theModel) {
+		System.out.println("Active course Id: "+theCode);
+		List<InProgressCourse> courseStudents = instructorService.getCourseStudents(theCode);
+		return "redirect:/instructors/active-courses";
 	}
 	
 	// Get login user full name

@@ -92,22 +92,25 @@
 									<th scope="col">Instructor Name</th>
 									<th scope="col">Time</th>
 									<th scope="col">Day</th>
-									<th scope="col">View</th>
+									<th scope="col">Action</th>
 								</tr>
-  								<c:forEach items="${instructorActiveCoursesList}" var="adminCourse">
+  								<c:forEach items="${instructorActiveCoursesList}" var="activeCourse">
+  									<!-- Construct an "view student link" with course code -->
+  									<c:url var="viewLink" value="/instructors/view-students">
+  										<c:param name="activeCourseCode" value="${activeCourse.code}"/>
+  									</c:url>
 									<tr>
-										<td>${adminCourse.code}</td>
-										<td>${adminCourse.instructor}</td>
-										<td>${adminCourse.time}</td>
-										<td>${adminCourse.day}</td>
-										<td><button class="btn btn-sm btn-outline-primary">View Detail</button></td>
+										<td>${activeCourse.code}</td>
+										<td>${activeCourse.instructor}</td>
+										<td>${activeCourse.time}</td>
+										<td>${activeCourse.day}</td>
+										<td><a class="btn btn-sm btn-outline-primary" href="${viewLink}">View Student</a></td>
 									</tr>
 								</c:forEach>
 						</table>
 					</div>
 				</div>
 				
-
 			</main>
 		</div>
 	</div>

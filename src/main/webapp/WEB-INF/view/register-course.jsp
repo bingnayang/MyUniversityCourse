@@ -103,19 +103,30 @@
 
 					</div>
 				</div>
-				<div class="card bg-light">
+				<div class="card bg-light mb-2">
 					<div class="card-body">
-						<h5 class="card-title">Add New Course</h5>
-						<form:form
-							action="${pageContext.request.contextPath}/students/register-course"
-							modelAttribute="registerCourse"
-							method="POST">
-							<div class="form-group">
-								<label for="courseCode">Course Code</label> 
-								<form:input class="form-control" path="course_code" required="required"/>
-							</div>
-							<button type="submit" class="btn btn-outline-primary btn-block">Submit</button>
-						</form:form>
+						<h4>Active Courses</h4>
+						<div class="container-fluid">
+							<table class="table">
+								<thead class="thead-light">
+									<tr>
+										<th scope="col">Course Code</th>
+										<th scope="col">Instructor</th>
+										<th scope="col">Time</th>
+										<th scope="col">Day</th>
+										<th scope="col">Register</th>
+									</tr>
+									<c:forEach items="${activeCourses}" var="activeCourses">
+										<tr>
+											<td>${activeCourses.code}</td>
+											<td>${activeCourses.instructor}</td>
+											<td>${activeCourses.time}</td>
+											<td>${activeCourses.day}</td>
+											<td><a class="btn btn-outline-primary btn-sm">Select</a></td>
+										</tr>
+									</c:forEach>
+							</table>
+						</div>
 					</div>
 				</div>
 			</main>

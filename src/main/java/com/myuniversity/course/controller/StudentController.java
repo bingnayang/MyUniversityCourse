@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.myuniversity.course.entity.ActiveCourse;
 import com.myuniversity.course.entity.InProgressCourse;
 import com.myuniversity.course.service.AccountService;
+import com.myuniversity.course.service.CourseService;
 import com.myuniversity.course.service.StudentService;
 
 
@@ -21,13 +22,18 @@ public class StudentController {
 	private AccountService accountService;
 	@Autowired
 	private StudentService studentService;
+	@Autowired
+	private CourseService courseService;
 	
 	@GetMapping("/students/register-course")
 	public String studentRegisterCourse(Model theModel) {
 		
 		// Create model attribute to bind form data
-		ActiveCourse registerCourse = new ActiveCourse();
-		theModel.addAttribute("registerCourse",registerCourse);
+//		ActiveCourse registerCourse = new ActiveCourse();
+//		theModel.addAttribute("registerCourse",registerCourse);
+		// Get active course list from the courseService
+		List<ActiveCourse> theActiveCourses = courseService.getActiveCourses();
+		theModel.addAttribute("activeCourses",theActiveCourses);
 		return "register-course";
 	}
 	@GetMapping("/students/academics")
