@@ -44,9 +44,10 @@ public class InstructorController {
 		List<ActiveCourse> instructorCoursesList = instructorService.getInstructorActiveCourses(accountName);
 		theModel.addAttribute("instructorActiveCoursesList",instructorCoursesList);
 		
-		System.out.println("Active course Id: "+theCode);
+		System.out.println("Active course code: "+theCode);
 		List<InProgressCourse> courseStudents = instructorService.getCourseStudents(theCode);
 		theModel.addAttribute("courseStudents",courseStudents);
+		theModel.addAttribute("courseCode",theCode);
 		return "instructor-active-courses";
 	}
 	

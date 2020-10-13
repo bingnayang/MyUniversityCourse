@@ -114,16 +114,17 @@
 										<td>${activeCourse.day}</td>
  										<td><a class="btn btn-sm btn-outline-primary collapsible" type="button" href="${viewLink}">View
 												Student</a></td>
-
 									</tr>
 								</c:forEach>
 						</table>
 						<div class="content">
-							<h5>Course: </h5>
+							<h5>Course: ${courseCode}</h5>
 							<h5>Student List: </h5>
+							<ul class="list-group">
 								<c:forEach items="${courseStudents}" var="courseStudents">
-									<p>${courseStudents.student_name}</p>
+									 <li class="list-group-item">${courseStudents.student_name}</li>
 								</c:forEach>
+							</ul>
 						</div>
 					</div>
 				</div>
