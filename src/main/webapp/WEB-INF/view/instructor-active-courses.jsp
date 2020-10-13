@@ -2,7 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="security"
+	uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,9 +15,10 @@
 <link
 	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"
 	rel="stylesheet">
-<!-- External CSS --> 
-<link href="${pageContext.request.contextPath}/resources/css/dashboard.css" 
-	rel="stylesheet" >
+<!-- External CSS -->
+<link
+	href="${pageContext.request.contextPath}/resources/css/dashboard.css"
+	rel="stylesheet">
 <title>Instructor Page</title>
 </head>
 <body>
@@ -58,8 +60,9 @@
 							class="btn btn-outline-primary btn-block"
 							href="${pageContext.request.contextPath}/">Home</a></li>
 						<li class="nav-item mb-2"><a
-							class="btn btn-outline-primary btn-block" 
-							href="${pageContext.request.contextPath}/course-list">University Courses List</a></li>	
+							class="btn btn-outline-primary btn-block"
+							href="${pageContext.request.contextPath}/course-list">University
+								Courses List</a></li>
 						<security:authorize access="hasRole('INSTRUCTOR')">
 							<li class="nav-item mb-2"><a
 								class="btn btn-outline-primary btn-block"
@@ -69,8 +72,8 @@
 						<security:authorize access="hasRole('INSTRUCTOR')">
 							<li class="nav-item mb-2"><a
 								class="btn btn-outline-primary btn-block"
-								href="${pageContext.request.contextPath}/instructors/active-courses">Active 
-								Courses</a></li>
+								href="${pageContext.request.contextPath}/instructors/active-courses">Active
+									Courses</a></li>
 						</security:authorize>
 					</ul>
 				</div>
@@ -79,8 +82,12 @@
 			<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
 				<div
 					class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-					<h1 class="h2">Instructor Active Courses</h1> 
-					<div class="btn-toolbar mb-2 mb-md-0"><security:authentication property="principal.username"/> | <security:authentication property="principal.authorities"/></div>
+					<h1 class="h2">Instructor Active Courses</h1>
+					<div class="btn-toolbar mb-2 mb-md-0">
+						<security:authentication property="principal.username" />
+						|
+						<security:authentication property="principal.authorities" />
+					</div>
 				</div>
 				<div>
 					<hr>
@@ -94,23 +101,33 @@
 									<th scope="col">Day</th>
 									<th scope="col">Action</th>
 								</tr>
-  								<c:forEach items="${instructorActiveCoursesList}" var="activeCourse">
-  									<!-- Construct an "view student link" with course code -->
-  									<c:url var="viewLink" value="/instructors/view-students">
-  										<c:param name="activeCourseCode" value="${activeCourse.code}"/>
-  									</c:url>
+								<c:forEach items="${instructorActiveCoursesList}"
+									var="activeCourse">
+									<!-- Construct an "view student link" with course code -->
+ 									<c:url var="viewLink" value="/instructors/view-students">
+										<c:param name="activeCourseCode" value="${activeCourse.code}" />
+									</c:url>
 									<tr>
 										<td>${activeCourse.code}</td>
 										<td>${activeCourse.instructor}</td>
 										<td>${activeCourse.time}</td>
 										<td>${activeCourse.day}</td>
-										<td><a class="btn btn-sm btn-outline-primary" href="${viewLink}">View Student</a></td>
+ 										<td><a class="btn btn-sm btn-outline-primary collapsible" type="button" href="${viewLink}">View
+												Student</a></td>
+
 									</tr>
 								</c:forEach>
 						</table>
+						<div class="content">
+							<h5>Course: </h5>
+							<h5>Student List: </h5>
+								<c:forEach items="${courseStudents}" var="courseStudents">
+									<p>${courseStudents.student_name}</p>
+								</c:forEach>
+						</div>
 					</div>
 				</div>
-				
+
 			</main>
 		</div>
 	</div>

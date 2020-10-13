@@ -34,14 +34,20 @@ public class InstructorController {
 		String accountName = getAccountName();
 		List<ActiveCourse> instructorCoursesList = instructorService.getInstructorActiveCourses(accountName);
 		theModel.addAttribute("instructorActiveCoursesList",instructorCoursesList);
+		
 		return "instructor-active-courses";
 	}
 	
 	@GetMapping("/instructors/view-students")
 	public String courseStudents(@RequestParam("activeCourseCode") String theCode, Model theModel) {
+		String accountName = getAccountName();
+		List<ActiveCourse> instructorCoursesList = instructorService.getInstructorActiveCourses(accountName);
+		theModel.addAttribute("instructorActiveCoursesList",instructorCoursesList);
+		
 		System.out.println("Active course Id: "+theCode);
 		List<InProgressCourse> courseStudents = instructorService.getCourseStudents(theCode);
-		return "redirect:/instructors/active-courses";
+		theModel.addAttribute("courseStudents",courseStudents);
+		return "instructor-active-courses";
 	}
 	
 	// Get login user full name
