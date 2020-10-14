@@ -12,5 +12,5 @@ public interface InstructorService {
 
 	public List<InProgressCourse> getCourseStudents(String theCode);
 
-	public List<CourseGrade> getStudentGrade(String theCode);
+	public List<CourseGrade> getCourseStudentList(String theCode);
 }

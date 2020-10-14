@@ -33,9 +33,9 @@ public class InstructorServiceImpl implements InstructorService {
 
 	@Override
 	@Transactional
-	public List<CourseGrade> getStudentGrade(String theCode) {
+	public List<CourseGrade> getCourseStudentList(String theCode) {
 		// TODO Auto-generated method stub
-		return instructorDAO.getStudentGrade(theCode);
+		return instructorDAO.getCourseStudentList(theCode);
 	}
 
 }

@@ -64,7 +64,7 @@ public class InstructorDAOImpl implements InstructorDAO {
 	}
 
 	@Override
-	public List<CourseGrade> getStudentGrade(String theCode) {
+	public List<CourseGrade> getCourseStudentList(String theCode) {
 		// get the current hibernate session
 		Session currentSession = sessionFactory.getCurrentSession();
 		

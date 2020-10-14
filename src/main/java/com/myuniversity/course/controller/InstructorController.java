@@ -61,7 +61,7 @@ public class InstructorController {
 		theModel.addAttribute("instructorActiveCoursesList",instructorCoursesList);
 		
 		System.out.println("Active course code: "+theCode);
-		List<InProgressCourse> courseStudents = instructorService.getCourseStudents(theCode);
+		List<CourseGrade> courseStudents = instructorService.getCourseStudentList(theCode);
 		theModel.addAttribute("courseStudents",courseStudents);
 		return "post-grade";
 	}

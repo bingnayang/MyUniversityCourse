@@ -12,5 +12,5 @@ public interface InstructorDAO {
 
 	List<InProgressCourse> getCourseStudents(String theCode);
 
-	List<CourseGrade> getStudentGrade(String theCode);
+	List<CourseGrade> getCourseStudentList(String theCode);
 }
