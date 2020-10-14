@@ -2,7 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="security"
+	uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,9 +15,10 @@
 <link
 	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"
 	rel="stylesheet">
-<!-- External CSS --> 
-<link href="${pageContext.request.contextPath}/resources/css/dashboard.css" 
-	rel="stylesheet" >
+<!-- External CSS -->
+<link
+	href="${pageContext.request.contextPath}/resources/css/dashboard.css"
+	rel="stylesheet">
 <title>Instructor Page</title>
 </head>
 <body>
@@ -58,9 +60,9 @@
 							class="btn btn-outline-primary btn-block"
 							href="${pageContext.request.contextPath}/">Home</a></li>
 						<li class="nav-item mb-2"><a
-							class="btn btn-outline-primary btn-block" 
+							class="btn btn-outline-primary btn-block"
 							href="${pageContext.request.contextPath}/course-list">
-								University Courses List</a></li>	
+								University Courses List</a></li>
 						<security:authorize access="hasRole('INSTRUCTOR')">
 							<li class="nav-item mb-2"><a
 								class="btn btn-outline-primary btn-block"
@@ -70,8 +72,8 @@
 						<security:authorize access="hasRole('INSTRUCTOR')">
 							<li class="nav-item mb-2"><a
 								class="btn btn-outline-primary btn-block"
-								href="${pageContext.request.contextPath}/instructors/active-courses">In-Progress 
-								Courses</a></li>
+								href="${pageContext.request.contextPath}/instructors/active-courses">In-Progress
+									Courses</a></li>
 						</security:authorize>
 					</ul>
 				</div>
@@ -80,8 +82,12 @@
 			<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
 				<div
 					class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-					<h1 class="h2">Post Grade</h1> 
-					<div class="btn-toolbar mb-2 mb-md-0"><security:authentication property="principal.username"/> | <security:authentication property="principal.authorities"/></div>
+					<h1 class="h2">Post Grade</h1>
+					<div class="btn-toolbar mb-2 mb-md-0">
+						<security:authentication property="principal.username" />
+						|
+						<security:authentication property="principal.authorities" />
+					</div>
 				</div>
 				<div class="card bg-light mb-2">
 					<div class="card-body">
@@ -119,7 +125,18 @@
 				<div class="card bg-light mb-2">
 					<div class="card-body">
 						<div class="container-fluid">
-						
+							<table class="table">
+								<tr>
+									<th scope="col">Student Name</th>
+									<th scope="col">Final Grade</th>
+								</tr>
+								<c:forEach items="${courseStudents}" var="courseStudents">
+									<tr>
+										<td>${courseStudents.student_name}</td>
+										<td><input type="text" class="form-control"></td>
+									</tr>
+								</c:forEach>
+							</table>
 						</div>
 					</div>
 				</div>

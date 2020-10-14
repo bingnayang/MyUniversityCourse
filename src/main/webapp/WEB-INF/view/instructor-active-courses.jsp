@@ -126,7 +126,7 @@
 					<div class="card-body">
 						<div class="container-fluid">
 							<h5>Course: ${courseCode}</h5>
-							<h5>Student List</h5>
+							<h5>Student List:</h5>
 							<ul class="list-group">
 								<c:forEach items="${courseStudents}" var="courseStudents">
 									<li class="list-group-item">${courseStudents.student_name}</li>
