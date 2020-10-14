@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.myuniversity.course.dao.InstructorDAO;
 import com.myuniversity.course.entity.AdminAccount;
+import com.myuniversity.course.entity.CourseGrade;
 import com.myuniversity.course.entity.InProgressCourse;
 import com.myuniversity.course.entity.ActiveCourse;
 
@@ -28,6 +29,13 @@ public class InstructorServiceImpl implements InstructorService {
 	public List<InProgressCourse> getCourseStudents(String theCode) {
 		// TODO Auto-generated method stub
 		return instructorDAO.getCourseStudents(theCode);
+	}
+
+	@Override
+	@Transactional
+	public List<CourseGrade> getStudentGrade(String theCode) {
+		// TODO Auto-generated method stub
+		return instructorDAO.getStudentGrade(theCode);
 	}
 
 }

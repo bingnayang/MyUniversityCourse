@@ -70,7 +70,7 @@
 						<security:authorize access="hasRole('INSTRUCTOR')">
 							<li class="nav-item mb-2"><a
 								class="btn btn-outline-primary btn-block"
-								href="${pageContext.request.contextPath}/instructors/active-courses">Active 
+								href="${pageContext.request.contextPath}/instructors/active-courses">In-Progress 
 								Courses</a></li>
 						</security:authorize>
 					</ul>
@@ -80,9 +80,51 @@
 			<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
 				<div
 					class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-					<h1 class="h2">Welcome</h1> 
+					<h1 class="h2">Post Grade</h1> 
 					<div class="btn-toolbar mb-2 mb-md-0"><security:authentication property="principal.username"/> | <security:authentication property="principal.authorities"/></div>
 				</div>
+				<div class="card bg-light mb-2">
+					<div class="card-body">
+						<div class="container-fluid">
+							<table class="table">
+								<thead class="thead-light">
+									<tr>
+										<th scope="col">Code</th>
+										<th scope="col">Instructor Name</th>
+										<th scope="col">Time</th>
+										<th scope="col">Day</th>
+										<th scope="col">Action</th>
+									</tr>
+									<c:forEach items="${instructorActiveCoursesList}"
+										var="activeCourse">
+										<!-- Construct an "view student link" with course code -->
+										<c:url var="viewLink" value="/instructors/student-grades">
+											<c:param name="activeCourseCode" value="${activeCourse.code}" />
+										</c:url>
+										<tr>
+											<td>${activeCourse.code}</td>
+											<td>${activeCourse.instructor}</td>
+											<td>${activeCourse.time}</td>
+											<td>${activeCourse.day}</td>
+											<td><a
+												class="btn btn-sm btn-outline-primary collapsible"
+												type="button" href="${viewLink}">View Students</a></td>
+										</tr>
+									</c:forEach>
+							</table>
+						</div>
+					</div>
+				</div>
+
+				<div class="card bg-light mb-2">
+					<div class="card-body">
+						<div class="container-fluid">
+						
+						</div>
+					</div>
+				</div>
+
+
 
 			</main>
 		</div>

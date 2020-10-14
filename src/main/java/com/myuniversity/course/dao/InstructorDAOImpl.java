@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.myuniversity.course.entity.AdminAccount;
+import com.myuniversity.course.entity.CourseGrade;
 import com.myuniversity.course.entity.InProgressCourse;
 import com.myuniversity.course.entity.ActiveCourse;
 
@@ -59,6 +60,26 @@ public class InstructorDAOImpl implements InstructorDAO {
 			System.out.println("Code: "+i.getCourse_code());
 			System.out.println("Student: "+i.getStudent_name());
 		}
+		return courses;
+	}
+
+	@Override
+	public List<CourseGrade> getStudentGrade(String theCode) {
+		// get the current hibernate session
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		String hql = "from CourseGrade a where a.course_code = :course_code";
+		// create a query 
+		Query<CourseGrade> theQuery = currentSession.createQuery(hql, CourseGrade.class);
+		theQuery.setParameter("course_code",theCode);
+		
+		// execute query and get result list
+		List<CourseGrade> courses = theQuery.getResultList();
+		
+//		for(CourseGrade i: courses) {
+//			System.out.println("Course Code: "+i.getCourse_code());
+//			System.out.println("Student: "+i.getStudent_name());
+//		}
 		return courses;
 	}
 

@@ -89,46 +89,52 @@
 						<security:authentication property="principal.authorities" />
 					</div>
 				</div>
-				<div>
-					<hr>
-					<div class="container-fluid">
-						<table class="table">
-							<thead class="thead-light">
-								<tr>
-									<th scope="col">Code</th>
-									<th scope="col">Instructor Name</th>
-									<th scope="col">Time</th>
-									<th scope="col">Day</th>
-									<th scope="col">Action</th>
-								</tr>
-								<c:forEach items="${instructorActiveCoursesList}"
-									var="activeCourse">
-									<!-- Construct an "view student link" with course code -->
- 									<c:url var="viewLink" value="/instructors/view-students">
-										<c:param name="activeCourseCode" value="${activeCourse.code}" />
-									</c:url>
+				<div class="card bg-light mb-2">
+					<div class="card-body">
+						<div class="container-fluid">
+							<table class="table">
+								<thead class="thead-light">
 									<tr>
-										<td>${activeCourse.code}</td>
-										<td>${activeCourse.instructor}</td>
-										<td>${activeCourse.time}</td>
-										<td>${activeCourse.day}</td>
- 										<td><a class="btn btn-sm btn-outline-primary collapsible" type="button" href="${viewLink}">View
-												Student</a></td>
+										<th scope="col">Code</th>
+										<th scope="col">Instructor Name</th>
+										<th scope="col">Time</th>
+										<th scope="col">Day</th>
+										<th scope="col">Action</th>
 									</tr>
-								</c:forEach>
-						</table>
-						<div class="content">
+									<c:forEach items="${instructorActiveCoursesList}"
+										var="activeCourse">
+										<!-- Construct an "view student link" with course code -->
+										<c:url var="viewLink" value="/instructors/view-students">
+											<c:param name="activeCourseCode" value="${activeCourse.code}" />
+										</c:url>
+										<tr>
+											<td>${activeCourse.code}</td>
+											<td>${activeCourse.instructor}</td>
+											<td>${activeCourse.time}</td>
+											<td>${activeCourse.day}</td>
+											<td><a
+												class="btn btn-sm btn-outline-primary collapsible"
+												type="button" href="${viewLink}">View Student</a></td>
+										</tr>
+									</c:forEach>
+							</table>
+						</div>
+					</div>
+				</div>
+
+				<div class="card bg-light mb-2">
+					<div class="card-body">
+						<div class="container-fluid">
 							<h5>Course: ${courseCode}</h5>
-							<h5>Student List: </h5>
+							<h5>Student List</h5>
 							<ul class="list-group">
 								<c:forEach items="${courseStudents}" var="courseStudents">
-									 <li class="list-group-item">${courseStudents.student_name}</li>
+									<li class="list-group-item">${courseStudents.student_name}</li>
 								</c:forEach>
 							</ul>
 						</div>
 					</div>
 				</div>
-
 			</main>
 		</div>
 	</div>

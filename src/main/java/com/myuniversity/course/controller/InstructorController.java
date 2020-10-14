@@ -10,10 +10,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.myuniversity.course.entity.AdminAccount;
 import com.myuniversity.course.entity.InProgressCourse;
-import com.myuniversity.course.entity.InstructorAccount;
 import com.myuniversity.course.entity.ActiveCourse;
+import com.myuniversity.course.entity.CourseGrade;
 import com.myuniversity.course.service.AccountService;
 import com.myuniversity.course.service.InstructorService;
 
@@ -25,7 +24,11 @@ public class InstructorController {
 	private InstructorService instructorService;
 	
 	@GetMapping("/instructors/post-grade")
-	public String instructorPostGrade() {
+	public String instructorPostGrade(Model theModel) {
+		String accountName = getAccountName();
+		List<ActiveCourse> instructorCoursesList = instructorService.getInstructorActiveCourses(accountName);
+		theModel.addAttribute("instructorActiveCoursesList",instructorCoursesList);
+		
 		return "post-grade";
 	}
 	
@@ -49,6 +52,18 @@ public class InstructorController {
 		theModel.addAttribute("courseStudents",courseStudents);
 		theModel.addAttribute("courseCode",theCode);
 		return "instructor-active-courses";
+	}
+	
+	@GetMapping("/instructors/student-grades")
+	public String viewStudentGrade(@RequestParam("activeCourseCode") String theCode,Model theModel) {
+		String accountName = getAccountName();
+		List<ActiveCourse> instructorCoursesList = instructorService.getInstructorActiveCourses(accountName);
+		theModel.addAttribute("instructorActiveCoursesList",instructorCoursesList);
+		
+		System.out.println("Active course code: "+theCode);
+		List<CourseGrade> studentGradeList = instructorService.getStudentGrade(theCode);
+		theModel.addAttribute("studentGradeList",studentGradeList);
+		return "post-grade";
 	}
 	
 	// Get login user full name
