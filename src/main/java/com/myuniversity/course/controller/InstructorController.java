@@ -1,5 +1,6 @@
 package com.myuniversity.course.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,10 +9,13 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.myuniversity.course.entity.InProgressCourse;
 import com.myuniversity.course.entity.ActiveCourse;
+import com.myuniversity.course.entity.Course;
 import com.myuniversity.course.entity.CourseGrade;
 import com.myuniversity.course.service.AccountService;
 import com.myuniversity.course.service.InstructorService;
@@ -61,9 +65,23 @@ public class InstructorController {
 		theModel.addAttribute("instructorActiveCoursesList",instructorCoursesList);
 		
 		System.out.println("Active course code: "+theCode);
-		List<CourseGrade> courseStudents = instructorService.getCourseStudentList(theCode);
-		theModel.addAttribute("courseStudents",courseStudents);
+		List<CourseGrade> courseStudentsList = instructorService.getCourseStudentList(theCode);
+		theModel.addAttribute("courseStudentsList",courseStudentsList);
+		
+		CourseGrade postGrade = new CourseGrade();
+		theModel.addAttribute("postGrade",postGrade);
+		
 		return "post-grade";
+	}
+	
+	// Save grades to database
+	@PostMapping("/instructors/post_students_grade")
+	public String saveGrade(@ModelAttribute("postGrade") CourseGrade theCourseGrade) {
+		System.out.println("Update Course Id: "+theCourseGrade.getId());
+		System.out.println("Update Course Student: "+theCourseGrade.getStudent_name());
+		System.out.println("Update Course Grade: "+theCourseGrade.getGrade());
+
+		return "redirect:/instructors/post-grade";
 	}
 	
 	// Get login user full name

@@ -31,25 +31,25 @@ html, body {
 		</a>
 	</nav>
 	<!-- Login section -->
-	<div class="h-100 row align-items-center">
+	<div class="h-100 row align-items-center" style="background: #1F3944;">
 		<div class="col">
 			<div class="card container"
-				style="width: 28rem; background: #1F3944;">
+				style="width: 28rem;">
 				<div class="card-body">
-					<h5 class="card-title text-center text-light mb-5">
-						<i class="fas fa-graduation-cap fa-4x"></i>
+					<h5 class="card-title text-center mb-5">
+						<i class="fas fa-graduation-cap fa-4x" style="color: #1F3944;"></i>
 					</h5>
-					<h5 class="card-title text-center text-light mb-5">LOG IN</h5>
+					<h5 class="card-title text-center mb-5">LOG IN</h5>
 					<form:form
 						action="${pageContext.request.contextPath}/authenticateTheUser"
 						method="POST">
 						<div class="form-group">
 							<input type="text" class="form-control" placeholder="User Name"
-								name="username" />
+								name="username" required="required"/>
 						</div>
 						<div class="form-group">
 							<input type="password" class="form-control"
-								placeholder="Password" name="password" />
+								placeholder="Password" name="password" required="required"/>
 						</div>
 						<div class="form-group text-center">
 							<!-- Display error if user input username/password -->
@@ -63,7 +63,7 @@ html, body {
 								You Have Been Logged Out</div>
 							</c:if>
 						</div>
-						<button type="submit" class="btn btn-primary btn-block">Submit</button>
+						<button type="submit" class="btn btn-block text-light" style="background: #1F3944;">Submit</button>
 					</form:form>
 				</div>
 			</div>

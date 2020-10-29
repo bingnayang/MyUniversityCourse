@@ -125,17 +125,31 @@
 				<div class="card bg-light mb-2">
 					<div class="card-body">
 						<div class="container-fluid">
+
 							<table class="table">
 								<tr>
 									<th scope="col">Student Name</th>
 									<th scope="col">Final Grade</th>
+									<th scope="col">Action</th>
 								</tr>
-								<c:forEach items="${courseStudents}" var="courseStudents">
-									<tr>
-										<td>${courseStudents.student_name}</td>
-										<td><input type="text" class="form-control"></td>
-									</tr>
-								</c:forEach>
+								<form:form
+									action="${pageContext.request.contextPath}/instructors/post_students_grade"
+									modelAttribute="postGrade" method="POST">
+									<c:forEach items="${courseStudentsList}" var="courseStudents"
+										varStatus="vs">
+										<tr>
+												<form:input type="hidden" class="form-control"
+													path="id" value="${courseStudents.id}"/>
+											<td><form:input type="text" class="form-control"
+													path="student_name" value="${courseStudents.student_name}"/></td>
+											<td><form:input type="text" class="form-control"
+													path="grade" /></td>
+<!-- 											<td><button type="submit">Post Grade</button></td>
+ -->										</tr>
+									</c:forEach>
+									<button type="submit">Post Grade</button>
+									
+								</form:form>
 							</table>
 						</div>
 					</div>

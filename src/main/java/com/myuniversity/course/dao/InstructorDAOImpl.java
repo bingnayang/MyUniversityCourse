@@ -76,10 +76,11 @@ public class InstructorDAOImpl implements InstructorDAO {
 		// execute query and get result list
 		List<CourseGrade> courses = theQuery.getResultList();
 		
-//		for(CourseGrade i: courses) {
-//			System.out.println("Course Code: "+i.getCourse_code());
-//			System.out.println("Student: "+i.getStudent_name());
-//		}
+		for(CourseGrade i: courses) {
+			System.out.println("Course Code: "+i.getCourse_code());
+			System.out.println("Student: "+i.getStudent_name());
+			System.out.println("Grade: "+i.getGrade());
+		}
 		return courses;
 	}
 
