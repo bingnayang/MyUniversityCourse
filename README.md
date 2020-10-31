@@ -1,6 +1,7 @@
 # MyUniversityCourse
 
 ## Tools and Technologies Used
+* Java
 * Spring Framework
 * Maven
 * MySQL
